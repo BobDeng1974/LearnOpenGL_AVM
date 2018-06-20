@@ -1,0 +1,2058 @@
+{
+  "accessors": [
+    {
+      "name": "Body_1_positions",
+      "componentType": 5126,
+      "count": 58840,
+      "min": [
+        -2465.26123046875,
+        243.19580078125,
+        -960.4727783203125
+      ],
+      "max": [
+        2465.26123046875,
+        1909.3089599609375,
+        960.4727172851562
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Body_1_normals",
+      "componentType": 5126,
+      "count": 58840,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1288332
+    },
+    {
+      "name": "Body_1_texcoords",
+      "componentType": 5126,
+      "count": 58840,
+      "min": [
+        -19.323299407958984,
+        -74.33809661865234
+      ],
+      "max": [
+        117.40540313720703,
+        1.0781999826431274
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Body_1_0_indices",
+      "componentType": 5123,
+      "count": 60201,
+      "min": [
+        0
+      ],
+      "max": [
+        42031
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "Body_1_1_indices",
+      "componentType": 5123,
+      "count": 20091,
+      "min": [
+        125
+      ],
+      "max": [
+        58833
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 120404
+    },
+    {
+      "name": "Body_1_2_indices",
+      "componentType": 5123,
+      "count": 45549,
+      "min": [
+        2625
+      ],
+      "max": [
+        58281
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 160588
+    },
+    {
+      "name": "Body_1_3_indices",
+      "componentType": 5123,
+      "count": 948,
+      "min": [
+        5875
+      ],
+      "max": [
+        54371
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 251688
+    },
+    {
+      "name": "Body_1_4_indices",
+      "componentType": 5123,
+      "count": 9024,
+      "min": [
+        5959
+      ],
+      "max": [
+        47897
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 253584
+    },
+    {
+      "name": "Body_1_5_indices",
+      "componentType": 5123,
+      "count": 28680,
+      "min": [
+        6114
+      ],
+      "max": [
+        58839
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 271632
+    },
+    {
+      "name": "Body_1_6_indices",
+      "componentType": 5123,
+      "count": 14190,
+      "min": [
+        42034
+      ],
+      "max": [
+        49683
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 328992
+    },
+    {
+      "name": "Body_1_7_indices",
+      "componentType": 5123,
+      "count": 2406,
+      "min": [
+        49684
+      ],
+      "max": [
+        53006
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 357372
+    },
+    {
+      "name": "Wheel_04_1_positions",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1717.228515625,
+        0.6725000143051147,
+        640.0811157226562
+      ],
+      "max": [
+        -915.113525390625,
+        802.7874755859375,
+        928.0977172851562
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 706080
+    },
+    {
+      "name": "Wheel_04_1_normals",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1,
+        -1,
+        -0.9993000030517578
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1994412
+    },
+    {
+      "name": "Wheel_04_1_texcoords",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -2367.06884765625,
+        -170.00450134277344
+      ],
+      "max": [
+        4018.98193359375,
+        2786.75927734375
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 470720
+    },
+    {
+      "name": "Wheel_04_1_0_indices",
+      "componentType": 5123,
+      "count": 5760,
+      "min": [
+        0
+      ],
+      "max": [
+        1351
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 362184
+    },
+    {
+      "name": "Wheel_04_1_1_indices",
+      "componentType": 5123,
+      "count": 12666,
+      "min": [
+        1352
+      ],
+      "max": [
+        4653
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 373704
+    },
+    {
+      "name": "Wheel_03_1_positions",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1717.228515625,
+        0.6725000143051147,
+        -925.8934936523438
+      ],
+      "max": [
+        -915.113525390625,
+        802.7874755859375,
+        -637.8770751953125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 761928
+    },
+    {
+      "name": "Wheel_03_1_normals",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        0.9993000030517578
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2050260
+    },
+    {
+      "name": "Wheel_03_1_texcoords",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -2367.06884765625,
+        -170.00450134277344
+      ],
+      "max": [
+        4018.98193359375,
+        2786.75927734375
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 507952
+    },
+    {
+      "name": "Wheel_03_1_0_indices",
+      "componentType": 5123,
+      "count": 5760,
+      "min": [
+        0
+      ],
+      "max": [
+        1351
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 399036
+    },
+    {
+      "name": "Wheel_03_1_1_indices",
+      "componentType": 5123,
+      "count": 12666,
+      "min": [
+        1352
+      ],
+      "max": [
+        4653
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 410556
+    },
+    {
+      "name": "Interior_1_positions",
+      "componentType": 5126,
+      "count": 9593,
+      "min": [
+        -2287.019775390625,
+        417.8291931152344,
+        -806.419677734375
+      ],
+      "max": [
+        1145.88671875,
+        1761.525146484375,
+        804.8018798828125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 817776
+    },
+    {
+      "name": "Interior_1_normals",
+      "componentType": 5126,
+      "count": 9593,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2106108
+    },
+    {
+      "name": "Interior_1_texcoords",
+      "componentType": 5126,
+      "count": 9593,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        114.95140075683594,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 545184
+    },
+    {
+      "name": "Interior_1_0_indices",
+      "componentType": 5123,
+      "count": 49452,
+      "min": [
+        0
+      ],
+      "max": [
+        9538
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 435888
+    },
+    {
+      "name": "Interior_1_1_indices",
+      "componentType": 5123,
+      "count": 216,
+      "min": [
+        9539
+      ],
+      "max": [
+        9592
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 534792
+    },
+    {
+      "name": "Wheel_01_1_positions",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        1131.8194580078125,
+        0.6728000044822693,
+        -925.8936157226562
+      ],
+      "max": [
+        1933.9344482421875,
+        802.7877807617188,
+        -637.877197265625
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 932892
+    },
+    {
+      "name": "Wheel_01_1_normals",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        0.9993000030517578
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2221224
+    },
+    {
+      "name": "Wheel_01_1_texcoords",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -2367.06884765625,
+        -170.00450134277344
+      ],
+      "max": [
+        4018.98193359375,
+        2786.75927734375
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 621928
+    },
+    {
+      "name": "Wheel_01_1_0_indices",
+      "componentType": 5123,
+      "count": 5760,
+      "min": [
+        0
+      ],
+      "max": [
+        1351
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 535224
+    },
+    {
+      "name": "Wheel_01_1_1_indices",
+      "componentType": 5123,
+      "count": 12666,
+      "min": [
+        1352
+      ],
+      "max": [
+        4653
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 546744
+    },
+    {
+      "name": "Wheel_02_1_positions",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        1131.8194580078125,
+        0.6726999878883362,
+        640.0811157226562
+      ],
+      "max": [
+        1933.9344482421875,
+        802.7877197265625,
+        928.0977172851562
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 988740
+    },
+    {
+      "name": "Wheel_02_1_normals",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -1,
+        -1,
+        -0.9993000030517578
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2277072
+    },
+    {
+      "name": "Wheel_02_1_texcoords",
+      "componentType": 5126,
+      "count": 4654,
+      "min": [
+        -2367.06884765625,
+        -170.00450134277344
+      ],
+      "max": [
+        4018.98193359375,
+        2786.75927734375
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 659160
+    },
+    {
+      "name": "Wheel_02_1_0_indices",
+      "componentType": 5123,
+      "count": 5760,
+      "min": [
+        0
+      ],
+      "max": [
+        1351
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 572076
+    },
+    {
+      "name": "Wheel_02_1_1_indices",
+      "componentType": 5123,
+      "count": 12666,
+      "min": [
+        1352
+      ],
+      "max": [
+        4653
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 583596
+    },
+    {
+      "name": "Door_B_1_positions",
+      "componentType": 5126,
+      "count": 4205,
+      "min": [
+        -2378.5751953125,
+        625.598388671875,
+        -705.597412109375
+      ],
+      "max": [
+        -1943.52783203125,
+        1812.0125732421875,
+        705.5977172851562
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1044588
+    },
+    {
+      "name": "Door_B_1_normals",
+      "componentType": 5126,
+      "count": 4205,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2332920
+    },
+    {
+      "name": "Door_B_1_texcoords",
+      "componentType": 5126,
+      "count": 4205,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        117.25550079345703,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 696392
+    },
+    {
+      "name": "Door_B_1_0_indices",
+      "componentType": 5123,
+      "count": 11316,
+      "min": [
+        0
+      ],
+      "max": [
+        3010
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 608928
+    },
+    {
+      "name": "Door_B_1_1_indices",
+      "componentType": 5123,
+      "count": 2214,
+      "min": [
+        284
+      ],
+      "max": [
+        3465
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 631560
+    },
+    {
+      "name": "Door_B_1_2_indices",
+      "componentType": 5123,
+      "count": 690,
+      "min": [
+        2212
+      ],
+      "max": [
+        3468
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 635988
+    },
+    {
+      "name": "Door_B_1_3_indices",
+      "componentType": 5123,
+      "count": 366,
+      "min": [
+        2266
+      ],
+      "max": [
+        2367
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 637368
+    },
+    {
+      "name": "Door_B_1_4_indices",
+      "componentType": 5123,
+      "count": 3540,
+      "min": [
+        3012
+      ],
+      "max": [
+        4204
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 638100
+    },
+    {
+      "name": "Door_B_1_5_indices",
+      "componentType": 5123,
+      "count": 270,
+      "min": [
+        3226
+      ],
+      "max": [
+        3286
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 645180
+    },
+    {
+      "name": "Door_R2_1_positions",
+      "componentType": 5126,
+      "count": 3099,
+      "min": [
+        -1212.0087890625,
+        481.1145935058594,
+        623.3165893554688
+      ],
+      "max": [
+        -147.38839721679688,
+        1759.6287841796875,
+        958.902587890625
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1095048
+    },
+    {
+      "name": "Door_R2_1_normals",
+      "componentType": 5126,
+      "count": 3099,
+      "min": [
+        -1,
+        -1,
+        -0.9700999855995178
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2383380
+    },
+    {
+      "name": "Door_R2_1_texcoords",
+      "componentType": 5126,
+      "count": 3099,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        117.25550079345703,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 730032
+    },
+    {
+      "name": "Door_R2_1_0_indices",
+      "componentType": 5123,
+      "count": 6291,
+      "min": [
+        0
+      ],
+      "max": [
+        1765
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 645720
+    },
+    {
+      "name": "Door_R2_1_1_indices",
+      "componentType": 5123,
+      "count": 2649,
+      "min": [
+        269
+      ],
+      "max": [
+        3097
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 658304
+    },
+    {
+      "name": "Door_R2_1_2_indices",
+      "componentType": 5123,
+      "count": 1596,
+      "min": [
+        441
+      ],
+      "max": [
+        2390
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 663604
+    },
+    {
+      "name": "Door_R2_1_3_indices",
+      "componentType": 5123,
+      "count": 2112,
+      "min": [
+        1878
+      ],
+      "max": [
+        3098
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 666796
+    },
+    {
+      "name": "Door_R1_1_positions",
+      "componentType": 5126,
+      "count": 4944,
+      "min": [
+        -233.15939331054688,
+        470.5857849121094,
+        623.319091796875
+      ],
+      "max": [
+        996.9149169921875,
+        1746.8759765625,
+        1136.4892578125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1132236
+    },
+    {
+      "name": "Door_R1_1_normals",
+      "componentType": 5126,
+      "count": 4944,
+      "min": [
+        -1,
+        -1,
+        -0.9973000288009644
+      ],
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2420568
+    },
+    {
+      "name": "Door_R1_1_texcoords",
+      "componentType": 5126,
+      "count": 4944,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        117.23490142822266,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 754824
+    },
+    {
+      "name": "Door_R1_1_0_indices",
+      "componentType": 5123,
+      "count": 12135,
+      "min": [
+        0
+      ],
+      "max": [
+        3328
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 671020
+    },
+    {
+      "name": "Door_R1_1_1_indices",
+      "componentType": 5123,
+      "count": 3390,
+      "min": [
+        214
+      ],
+      "max": [
+        3928
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 695292
+    },
+    {
+      "name": "Door_R1_1_2_indices",
+      "componentType": 5123,
+      "count": 1962,
+      "min": [
+        1832
+      ],
+      "max": [
+        4146
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 702072
+    },
+    {
+      "name": "Door_R1_1_3_indices",
+      "componentType": 5123,
+      "count": 372,
+      "min": [
+        2063
+      ],
+      "max": [
+        2140
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 705996
+    },
+    {
+      "name": "Door_R1_1_4_indices",
+      "componentType": 5123,
+      "count": 342,
+      "min": [
+        3929
+      ],
+      "max": [
+        4012
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 706740
+    },
+    {
+      "name": "Door_R1_1_5_indices",
+      "componentType": 5123,
+      "count": 876,
+      "min": [
+        4147
+      ],
+      "max": [
+        4943
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 707424
+    },
+    {
+      "name": "Door_L1_1_positions",
+      "componentType": 5126,
+      "count": 4955,
+      "min": [
+        -233.15939331054688,
+        470.5857849121094,
+        -1136.4891357421875
+      ],
+      "max": [
+        996.9149780273438,
+        1746.8759765625,
+        -623.3189697265625
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1191564
+    },
+    {
+      "name": "Door_L1_1_normals",
+      "componentType": 5126,
+      "count": 4955,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        0.9973000288009644
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2479896
+    },
+    {
+      "name": "Door_L1_1_texcoords",
+      "componentType": 5126,
+      "count": 4955,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        117.23490142822266,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 794376
+    },
+    {
+      "name": "Door_L1_1_0_indices",
+      "componentType": 5123,
+      "count": 12135,
+      "min": [
+        0
+      ],
+      "max": [
+        3339
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 709176
+    },
+    {
+      "name": "Door_L1_1_1_indices",
+      "componentType": 5123,
+      "count": 3390,
+      "min": [
+        214
+      ],
+      "max": [
+        3939
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 733448
+    },
+    {
+      "name": "Door_L1_1_2_indices",
+      "componentType": 5123,
+      "count": 1962,
+      "min": [
+        1833
+      ],
+      "max": [
+        4157
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 740228
+    },
+    {
+      "name": "Door_L1_1_3_indices",
+      "componentType": 5123,
+      "count": 372,
+      "min": [
+        2064
+      ],
+      "max": [
+        2141
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 744152
+    },
+    {
+      "name": "Door_L1_1_4_indices",
+      "componentType": 5123,
+      "count": 342,
+      "min": [
+        3940
+      ],
+      "max": [
+        4023
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 744896
+    },
+    {
+      "name": "Door_L1_1_5_indices",
+      "componentType": 5123,
+      "count": 876,
+      "min": [
+        4158
+      ],
+      "max": [
+        4954
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 745580
+    },
+    {
+      "name": "Door_L2_1_positions",
+      "componentType": 5126,
+      "count": 3109,
+      "min": [
+        -1212.009033203125,
+        481.1145935058594,
+        -958.9022827148438
+      ],
+      "max": [
+        -147.38870239257812,
+        1759.6287841796875,
+        -623.3165283203125
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 1251024
+    },
+    {
+      "name": "Door_L2_1_normals",
+      "componentType": 5126,
+      "count": 3109,
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "max": [
+        1,
+        1,
+        0.9700999855995178
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 2539356
+    },
+    {
+      "name": "Door_L2_1_texcoords",
+      "componentType": 5126,
+      "count": 3109,
+      "min": [
+        0,
+        -74.33809661865234
+      ],
+      "max": [
+        117.25550079345703,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 834016
+    },
+    {
+      "name": "Door_L2_1_0_indices",
+      "componentType": 5123,
+      "count": 6291,
+      "min": [
+        0
+      ],
+      "max": [
+        1765
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 747332
+    },
+    {
+      "name": "Door_L2_1_1_indices",
+      "componentType": 5123,
+      "count": 2649,
+      "min": [
+        269
+      ],
+      "max": [
+        3107
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 759916
+    },
+    {
+      "name": "Door_L2_1_2_indices",
+      "componentType": 5123,
+      "count": 1596,
+      "min": [
+        439
+      ],
+      "max": [
+        2390
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 765216
+    },
+    {
+      "name": "Door_L2_1_3_indices",
+      "componentType": 5123,
+      "count": 2112,
+      "min": [
+        1878
+      ],
+      "max": [
+        3108
+      ],
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 768408
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "Car",
+      "byteLength": 4208184,
+      "uri": "Car.bin"
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 2576664,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 858888,
+      "byteOffset": 2576664,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 772632,
+      "byteOffset": 3435552,
+      "target": 34963
+    }
+  ],
+  "images": [
+    {
+      "name": "tire",
+      "uri": "tire.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "carpaint",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8235,
+          0.8235,
+          0.8235,
+          1
+        ],
+        "metallicFactor": 0.63,
+        "roughnessFactor": 40
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "aliasmat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1725,
+          0.1725,
+          0.1725,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 10
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "black",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1451,
+          0.1451,
+          0.1451,
+          1
+        ],
+        "metallicFactor": 0.45,
+        "roughnessFactor": 20
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "windowglass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1922,
+          0.1922,
+          0.1922,
+          0.5700000000000001
+        ],
+        "metallicFactor": 0.819,
+        "roughnessFactor": 52
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "BLEND",
+      "doubleSided": true
+    },
+    {
+      "name": "clearglass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.588,
+          0.588,
+          0.588,
+          0.26
+        ],
+        "metallicFactor": 0.333,
+        "roughnessFactor": 26
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "BLEND",
+      "doubleSided": true
+    },
+    {
+      "name": "chrome",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6314,
+          0.6314,
+          0.6314,
+          1
+        ],
+        "metallicFactor": 0.36,
+        "roughnessFactor": 30
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "redglass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4314,
+          0.0471,
+          0.0471,
+          0.7
+        ],
+        "metallicFactor": 0.855,
+        "roughnessFactor": 43
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "BLEND",
+      "doubleSided": true
+    },
+    {
+      "name": "Brakelight_Red",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4314,
+          0.0471,
+          0.0471,
+          1
+        ],
+        "metallicFactor": 0.855,
+        "roughnessFactor": 43
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "tire_mat1",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 0.25,
+        "roughnessFactor": 20
+      },
+      "occlusionTexture": {
+        "index": 0
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "rim",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6784,
+          0.6784,
+          0.6784,
+          1
+        ],
+        "metallicFactor": 0.333,
+        "roughnessFactor": 20
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "interior",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.3961,
+          0.3961,
+          0.3961,
+          1
+        ],
+        "metallicFactor": 0.36,
+        "roughnessFactor": 10
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "mirror",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4667,
+          0.5373,
+          0.5255,
+          1
+        ],
+        "metallicFactor": 0.126,
+        "roughnessFactor": 26
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Body_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 4,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 5,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 6,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 7,
+          "material": 4,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 8,
+          "material": 5,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 9,
+          "material": 6,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 10,
+          "material": 7,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Wheel_04_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 11,
+            "NORMAL": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 14,
+          "material": 8,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 11,
+            "NORMAL": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 15,
+          "material": 9,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Wheel_03_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 16,
+            "NORMAL": 17,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 8,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 16,
+            "NORMAL": 17,
+            "TEXCOORD_0": 18
+          },
+          "indices": 20,
+          "material": 9,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Interior_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 21,
+            "NORMAL": 22,
+            "TEXCOORD_0": 23
+          },
+          "indices": 24,
+          "material": 10,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 21,
+            "NORMAL": 22,
+            "TEXCOORD_0": 23
+          },
+          "indices": 25,
+          "material": 11,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Wheel_01_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 26,
+            "NORMAL": 27,
+            "TEXCOORD_0": 28
+          },
+          "indices": 29,
+          "material": 8,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 26,
+            "NORMAL": 27,
+            "TEXCOORD_0": 28
+          },
+          "indices": 30,
+          "material": 9,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Wheel_02_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 31,
+            "NORMAL": 32,
+            "TEXCOORD_0": 33
+          },
+          "indices": 34,
+          "material": 8,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 31,
+            "NORMAL": 32,
+            "TEXCOORD_0": 33
+          },
+          "indices": 35,
+          "material": 9,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Door_B_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 39,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 40,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 41,
+          "material": 5,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 42,
+          "material": 6,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 43,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 36,
+            "NORMAL": 37,
+            "TEXCOORD_0": 38
+          },
+          "indices": 44,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Door_R2_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 45,
+            "NORMAL": 46,
+            "TEXCOORD_0": 47
+          },
+          "indices": 48,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 45,
+            "NORMAL": 46,
+            "TEXCOORD_0": 47
+          },
+          "indices": 49,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 45,
+            "NORMAL": 46,
+            "TEXCOORD_0": 47
+          },
+          "indices": 50,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 45,
+            "NORMAL": 46,
+            "TEXCOORD_0": 47
+          },
+          "indices": 51,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Door_R1_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 55,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 56,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 57,
+          "material": 5,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 58,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 59,
+          "material": 11,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 52,
+            "NORMAL": 53,
+            "TEXCOORD_0": 54
+          },
+          "indices": 60,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Door_L1_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 64,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 65,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 66,
+          "material": 5,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 67,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 68,
+          "material": 11,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 61,
+            "NORMAL": 62,
+            "TEXCOORD_0": 63
+          },
+          "indices": 69,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Door_L2_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 70,
+            "NORMAL": 71,
+            "TEXCOORD_0": 72
+          },
+          "indices": 73,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 70,
+            "NORMAL": 71,
+            "TEXCOORD_0": 72
+          },
+          "indices": 74,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 70,
+            "NORMAL": 71,
+            "TEXCOORD_0": 72
+          },
+          "indices": 75,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 70,
+            "NORMAL": 71,
+            "TEXCOORD_0": 72
+          },
+          "indices": 76,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Body",
+      "mesh": 0
+    },
+    {
+      "name": "Wheel_04",
+      "mesh": 1
+    },
+    {
+      "name": "Wheel_03",
+      "mesh": 2
+    },
+    {
+      "name": "Interior",
+      "mesh": 3
+    },
+    {
+      "name": "Wheel_01",
+      "mesh": 4
+    },
+    {
+      "name": "Wheel_02",
+      "mesh": 5
+    },
+    {
+      "name": "Door_B",
+      "mesh": 6
+    },
+    {
+      "name": "Door_R2",
+      "mesh": 7
+    },
+    {
+      "name": "Door_R1",
+      "mesh": 8
+    },
+    {
+      "name": "Door_L1",
+      "mesh": 9
+    },
+    {
+      "name": "Door_L2",
+      "mesh": 10
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9986,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "name": "tire",
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}
