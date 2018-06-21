@@ -33,12 +33,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 
-const unsigned int SCREEN_WIDTH = 1920;
-const unsigned int SCREEN_HEIGHT = 720;
-
-const unsigned int TOP_VIEW_WIDTH = 640;
-const unsigned int TOP_VIEW_HEIGHT = 720;
-
 // settings
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
@@ -59,7 +53,7 @@ float _distance = 9.0f;
 float r = 1.0f;
 float g = 0.0f;
 
-std::list<float> wheelAngleArray;
+float wheelAngle = -45.0f;
 
 glm::vec3 at = glm::vec3(0.0f, 0.0f, 0.0f);
 
@@ -71,28 +65,22 @@ std::vector<float> vertexArray;
 
 int areaRectangleNum = 0;
 
+enum Radius{
+    NO,
+    MIN,
+    MAX
+};
+
 std::vector<float> areaVertexArray;
 
-float caculateX(float x0, float z0, float z, float radius, float startX, float _angle)
+float caculateX(float x0, float z0, float z, float radius)
 {
     float x = pow(pow(radius, 2) - pow(z - z0, 2), 0.5);
 
-    if(_angle >= -45.0f && _angle <= 45.0f){
-        if(x + x0 >= startX-1.0f)  {
-            x = x + x0;
-        }else if(-x + x0 >= startX-1.0f){
-            x = -x + x0;
-        }else{
-            assert(0);
-        }
-    }else if(_angle >= 135.0f && _angle <= 225.0f){
-        if(x + x0 <= startX+1.0f)  {
-            x = x + x0;
-        }else if(-x + x0 <= startX+1.0f){
-            x = -x + x0;
-        }else{
-            assert(0);
-        }
+    if(x + x0 >= 0.0f)  {
+        x = x + x0;
+    }else if(-x + x0 >= 0.0f){
+        x = -x + x0;
     }else{
         assert(0);
     }
@@ -120,18 +108,11 @@ float AppendVertexArray(float beginX, float endX,
                         float _angle,
                         std::list<float>& arrayX, std::list<float>& arrayZ)
 {
-    //assert(beginX < endX);
+    assert(beginX < endX);
 
     //yuan xin
     float x0 = -134.0f;
-    float z0;
-    if(_angle >= -45.0f && _angle <= 45.0f){
-        z0 = 265.0f / (sin(glm::radians(float(_angle))) / cos(glm::radians(float(_angle))));
-    }else if(_angle >= 135.0f && _angle <= 225.0f){
-        z0 = 265.0f / (sin(glm::radians(float(_angle-180))) / cos(glm::radians(float(_angle-180))));
-    }else{
-        assert(0);
-    }
+    float z0 = 265.0f / (sin(glm::radians(float(_angle))) / cos(glm::radians(float(_angle))));
 
 
     if(pow(_radius, 2) - pow(beginX - x0, 2) <= 0.0f) {
@@ -151,32 +132,32 @@ float AppendVertexArray(float beginX, float endX,
 
 
     float _endX = pow(pow(_radius, 2) - pow(endZ - z0, 2), 0.5);
-
-    if(_angle >= -45.0f && _angle <= 45.0f){
-        if(_endX + x0 >= beginX-1.0f)  {
-            _endX = _endX + x0;
-        }else if(-_endX + x0 >= beginX-1.0f){
-            _endX = -_endX + x0;
-        }else{
-            assert(0);
-        }
-
-        _endX = min(_endX, endX);
-    }else if(_angle >= 135.0f && _angle <= 225.0f){
-        if(_endX + x0 <= beginX+1.0f)  {
-            _endX = _endX + x0;
-        }else if(-_endX + x0 <= beginX+1.0f){
-            _endX = -_endX + x0;
-        }else{
-            assert(0);
-        }
-
-        _endX = max(_endX, endX);
+    if(_endX + x0 >= beginX)  {
+        _endX = _endX + x0;
+    }else if(-_endX + x0 >= beginX){
+        _endX = -_endX + x0;
     }else{
         assert(0);
     }
 
+    assert((_endX > 0.0f && endX > 0.0f) || (_endX < 0.0f && endX < 0.0f));
+
+    if(_endX > 0.0f && endX > 0.0f){
+        _endX = min(_endX, endX);
+    }
+
+    if(_endX < 0.0f && endX < 0.0f){
+        _endX = max(_endX, endX);
+    }
+
     float lengthX = abs(_endX - beginX);
+
+
+    // std::cout << " x0 = " << x0 << " z0 = " << z0 << " _radius = " << _radius << " angle = " << _angle << endl;
+    // std::cout << " beginZ = " << beginZ <<  " endZ = " << endZ <<  " lengthZ = " << lengthZ << endl;
+    // std::cout << " beginX = " << beginX <<  " _endX = " << _endX <<  " lengthX = " << lengthX << endl;
+
+
 
     if(lengthZ <=  lengthX){
         //an zhao X fen 100 fen
@@ -209,7 +190,7 @@ float AppendVertexArray(float beginX, float endX,
         float dif = (zEnd - zStart)/num;
         for(int i = 0; i < num; i++){
             float z = zStart + i * dif;
-            float x = caculateX(x0, z0, z, _radius, xStart, _angle);
+            float x = caculateX(x0, z0, z, _radius);
             if(x > endX) return zStart + (i-1) * dif;
             arrayX.push_back(x);
             arrayZ.push_back(z);
@@ -221,35 +202,6 @@ float AppendVertexArray(float beginX, float endX,
     //assert(0);
 
     return 0.0f;
-}
-
-float AppendVertexArrayEx(float beginX, float endX,
-                        float _radius,
-                        float _angle,
-                        std::list<float>& arrayX, std::list<float>& arrayZ)
-{
-    float x0 = -134.0f;
-    float z0;
-    if(_angle >= -45.0f && _angle <= 45.0f){
-        z0 = 265.0f / (sin(glm::radians(float(_angle))) / cos(glm::radians(float(_angle))));
-    }else if(_angle >= 135.0f && _angle <= 225.0f){
-        z0 = 265.0f / (sin(glm::radians(float(_angle-180))) / cos(glm::radians(float(_angle-180))));
-    }else{
-        assert(0);
-    }
-
-    float xStart = beginX;
-    float xEnd = endX;
-
-    int num = 100;
-
-    float dif = (xEnd - xStart)/num;
-    for(int i = 0; i < num; i++){
-        float x = xStart + i * dif;
-        float z = caculateZ(x0, z0, x, _radius);
-        arrayX.push_back(x);
-        arrayZ.push_back(z);
-    }
 }
 
 void generateLineVertexArray(std::vector<float>& array,
@@ -367,6 +319,8 @@ void generateAreaVertexArrayWithAngle0(std::vector<float>& vertexArray, std::vec
                                         float rightLeftZ, float rightRightZ,
                                         float _angle)
 {
+    assert(startx < endx);
+
     int num = 100;
     float dif = (endx - startx)/num;
 
@@ -506,79 +460,6 @@ void generateAreaVertexArray(std::vector<float>& vertexArray, std::vector<float>
     //std::cout << " areaVertexArray.size() = " << areaVertexArray.size()  << std::endl;
 }
 
-void generateAreaVertexArrayRear(std::vector<float>& vertexArray, std::vector<float>& areaVertexArray,
-                            std::list<float>& _frontMinX, std::list<float>& _frontMinZ,
-                            std::list<float>& _frontMaxX, std::list<float>& _frontMaxZ,
-                            std::list<float>& _backLeftMinX, std::list<float>& _backLeftMinZ,
-                            std::list<float>& _backLeftMaxX, std::list<float>& _backLeftMaxZ,
-                            std::list<float>& _backRightMinX, std::list<float>& _backRightMinZ,
-                            std::list<float>& _backRightMaxX, std::list<float>& _backRightMaxZ,
-                            float _angle)
-{
-    //std::cout << " _angle = " << _angle << " _frontLeftMinX.size() = " << _frontLeftMinX.size() << " _frontLeftMaxX.size() = " << _frontLeftMaxX.size() << std::endl;
-
-    assert(_frontMinX.size() == _frontMinZ.size());
-    assert(_frontMaxX.size() == _frontMaxZ.size());
-    assert(_backLeftMinX.size() == _backLeftMinZ.size());
-    assert(_backLeftMaxX.size() == _backLeftMaxZ.size());
-    assert(_backRightMinX.size() == _backRightMinZ.size());
-    assert(_backRightMaxX.size() == _backRightMaxZ.size());
-
-    assert(_frontMinX.size() == _frontMaxX.size());
-    assert(_backLeftMinX.size() == _backLeftMaxX.size());
-    assert(_backRightMinX.size() == _backRightMaxX.size());
-
-    assert(_backLeftMinX.size() == _backRightMaxX.size());
-    assert(_backRightMinX.size() == _backLeftMaxX.size());
-
-    AppendRectangle(vertexArray,
-                _frontMinX,  _frontMinZ,
-                _frontMaxX,  _frontMaxZ,
-                _angle, RectangleNum);
-
-    AppendRectangle(vertexArray,
-                _backLeftMinX,  _backLeftMinZ,
-                _backLeftMaxX,  _backLeftMaxZ,
-                _angle, RectangleNum);
-
-    AppendRectangle(vertexArray,
-                _backRightMinX,  _backRightMinZ,
-                _backRightMaxX,  _backRightMaxZ,
-                _angle, RectangleNum);
-
-    assert(_frontMinX.size() == _frontMinZ.size());
-    assert(_frontMaxX.size() == _frontMaxZ.size());
-    assert(_backLeftMinX.size() == _backLeftMinZ.size());
-    assert(_backLeftMaxX.size() == _backLeftMaxZ.size());
-    assert(_backRightMinX.size() == _backRightMinZ.size());
-    assert(_backRightMaxX.size() == _backRightMaxZ.size());
-
-    assert(_frontMinX.size() == _frontMaxX.size());
-    assert(_backLeftMinX.size() == _backLeftMaxX.size());
-    assert(_backRightMinX.size() == _backRightMaxX.size());
-
-    assert(_backLeftMinX.size() == _backRightMaxX.size());
-    assert(_backRightMinX.size() == _backLeftMaxX.size());
-
-    if(_angle == 180.0f){
-        assert(0);
-    }else if(_angle > 180.0f){
-        AppendRectangle(areaVertexArray,
-                    _backLeftMinX,  _backLeftMinZ,
-                    _backRightMaxX,  _backRightMaxZ,
-                    _angle, areaRectangleNum);
-    }else if(_angle < 180.0f){
-        AppendRectangle(areaVertexArray,
-                    _backLeftMaxX,  _backLeftMaxZ,
-                    _backRightMinX,  _backRightMinZ,
-                    _angle, areaRectangleNum);
-    }else{
-        assert(0);
-    }
-
-    //std::cout << " areaVertexArray.size() = " << areaVertexArray.size()  << std::endl;
-}
-
 void generateMaxAngleLineVertexArray(std::vector<float>& maxAngleLineVertexArray,
                                     std::list<float>& _frontLeftMinX, std::list<float>& _frontLeftMinZ,
                                     std::list<float>& _frontLeftMaxX, std::list<float>& _frontLeftMaxZ,
@@ -683,7 +564,7 @@ int main()
 {
     thread TestPASThread = thread{TestPasFun};
 
-    //thread TestPASThread2 = thread{TestPasFunLine};
+    thread TestPASThread2 = thread{TestPasFunLine};
 
     // glfw: initialize and configure
     // ------------------------------
@@ -699,7 +580,7 @@ int main()
 
     // glfw window creation
     // --------------------
-    GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -743,23 +624,64 @@ int main()
     //Shader shaderProgramMaxAngle("dynimic_line_max_angle.vs", "dynimic_line_max_angle.fs");
     // ------------------------------build and compile shaders------------------------end
 
+    // ---------------------------Dynimic Line vertex data------------------------------begine
+    float dynimicLineVertices[] = {
+        // D dang : qian lun dong tai xian
+        148.0f,  0.1f,  -90.0f,  // a   //zuo qian
+        148.0f,  0.1f,  -70.0f,  // c
+        500.0f,  0.1f,  -90.0f,  //b
+        500.0f,  0.1f,  -90.0f,  //b
+        148.0f,  0.1f,  -70.0f,  //c
+        500.0f,  0.1f,  -70.0f,  //d
+
+        148.0f,  0.1f,  90.0f,  //you qian
+        148.0f,  0.1f,  70.0f,
+        500.0f,  0.1f,  90.0f,
+        500.0f,  0.1f,  90.0f,
+        148.0f,  0.1f,  70.0f,
+        500.0f,  0.1f,  70.0f,
+
+        // R dang : hou lun dong tai xian
+        -148.0f,  0.1f,  -90.0f,  //zuo hou
+        -148.0f,  0.1f,  -70.0f,
+        -500.0f,  0.1f,  -90.0f,
+        -500.0f,  0.1f,  -90.0f,
+        -148.0f,  0.1f,  -70.0f,
+        -500.0f,  0.1f,  -70.0f,
+
+        -148.0f,  0.1f,  90.0f,  //you hou
+        -148.0f,  0.1f,  70.0f,
+        -500.0f,  0.1f,  90.0f,
+        -500.0f,  0.1f,  90.0f,
+        -148.0f,  0.1f,  70.0f,
+        -500.0f,  0.1f,  70.0f,
+
+
+        //----------------------------area---------------------------
+        148.0f,  0.1f,  -70.0f, //area qian
+        500.0f,  0.1f,  -70.0f,
+        148.0f,  0.1f,  70.0f,
+        500.0f,  0.1f,  -70.0f,
+        148.0f,  0.1f,  70.0f,
+        500.0f,  0.1f,  70.0f,
+
+        -148.0f,  0.1f,  -70.0f, //area hou
+        -500.0f,  0.1f,  -70.0f,
+        -148.0f,  0.1f,  70.0f,
+        -500.0f,  0.1f,  -70.0f,
+        -148.0f,  0.1f,  70.0f,
+        -500.0f,  0.1f,  70.0f,
+    };
+
+    std::vector<float> lineVertexArray;
+
     std::vector<float> maxAngleLineVertexArray;
-
-    for(int angle = -45; angle <= 45; angle++){
-        wheelAngleArray.push_back((float)angle);
-    }
-
-    for(int angle = 135; angle <= 225; angle++){
-        wheelAngleArray.push_back((float)angle);
-    }
-
-    assert(wheelAngleArray.size() == 182);
 
     for(int angle = 45; angle >= -45; angle--)
     {
         if(angle == 0) {
             generateAreaVertexArrayWithAngle0(vertexArray, areaVertexArray,
-                                            131.0f, 500.0f,
+                                            134.0f, 500.0f,
                                             -91.0f, -87.0f,
                                             87.0f,  91.0f,
                                             (float)angle);
@@ -773,19 +695,19 @@ int main()
 
             std::list<float> frontLeftMinX, frontLeftMinZ;
             float result;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, 265.0f, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, 265.0f, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
                 frontLeftMinX.clear();
                 frontLeftMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
                     assert(0);
                 }
             }
 
             std::list<float> frontLeftMaxX, frontLeftMaxZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, 265.0f, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, 265.0f, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
                 frontLeftMaxX.clear();
                 frontLeftMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
                     assert(0);
                 }
             }
@@ -797,19 +719,19 @@ int main()
             maxR = radius2+2.0f;
 
             std::list<float> frontRightMinX, frontRightMinZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, 265.0f, minR, (float)angle, frontRightMinX, frontRightMinZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, 265.0f, minR, (float)angle, frontRightMinX, frontRightMinZ))){
                 frontRightMinX.clear();
                 frontRightMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, minR, (float)angle, frontRightMinX, frontRightMinZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, minR, (float)angle, frontRightMinX, frontRightMinZ))){
                     assert(0);
                 }
             }
 
             std::list<float> frontRightMaxX, frontRightMaxZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, 265.0f, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, 265.0f, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
                 frontRightMaxX.clear();
                 frontRightMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
                     assert(0);
                 }
             }
@@ -876,19 +798,19 @@ int main()
 
             std::list<float> frontLeftMinX, frontLeftMinZ;
             float result;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, -265.0f, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, -265.0f, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
                 frontLeftMinX.clear();
                 frontLeftMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, minR, (float)angle, frontLeftMinX, frontLeftMinZ))){
                     assert(0);
                 }
             }
 
             std::list<float> frontLeftMaxX, frontLeftMaxZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, -265.0f, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, -265.0f, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
                 frontLeftMaxX.clear();
                 frontLeftMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ))){
                     assert(0);
                 }
             }
@@ -900,19 +822,19 @@ int main()
             maxR = radius2+2.0f;
 
             std::list<float> frontRightMinX, frontRightMinZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, -265.0f, minR, (float)angle, frontRightMinX, frontRightMinZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, -265.0f, minR, (float)angle, frontRightMinX, frontRightMinZ))){
                 frontRightMinX.clear();
                 frontRightMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, minR, (float)angle, frontRightMinX, frontRightMinZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, minR, (float)angle, frontRightMinX, frontRightMinZ))){
                     assert(0);
                 }
             }
 
             std::list<float> frontRightMaxX, frontRightMaxZ;
-            if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, -265.0f, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
+            if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, -265.0f, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
                 frontRightMaxX.clear();
                 frontRightMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(131.0f, 500.0f, result, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
+                if(0.0f != (result = AppendVertexArray(134.0f, 500.0f, result, maxR, (float)angle, frontRightMaxX, frontRightMaxZ))){
                     assert(0);
                 }
             }
@@ -971,195 +893,19 @@ int main()
         }
     }
 
-    for(int angle = 225/*R : 45*/; angle >= 135/*R : -45*/; angle--)
-    {
-        if(angle == 180) {
-            generateAreaVertexArrayWithAngle0(vertexArray, areaVertexArray,
-                                            -134.0f, -500.0f,
-                                            -91.0f, -87.0f,
-                                            87.0f,  91.0f,
-                                            (float)angle);
-        }
-
-        if(angle > 180) {
-            //-----------front left------------------------
-            float radius1 = pow(pow((265.0f / (sin(glm::radians(float((angle-180)))) / cos(glm::radians(float((angle-180))))) + 89), 2) + pow(265, 2), 0.5);
-            float minR = radius1-2.0f;
-            float maxR = radius1+2.0f;
-
-            std::list<float> frontLeftMinX, frontLeftMinZ;
-            AppendVertexArrayEx(131.0f, -130.0f, minR, (float)angle, frontLeftMinX, frontLeftMinZ);
-
-            std::list<float> frontLeftMaxX, frontLeftMaxZ;
-            AppendVertexArrayEx(131.0f, -130.0f, maxR, (float)angle, frontLeftMaxX, frontLeftMaxZ);
-
-            //-----------back left------------------------
-            float radius2 = 265.0f / (sin(glm::radians(float((angle-180)))) / cos(glm::radians(float((angle-180))))) + 89.0f;
-            minR = radius2-2.0f;
-            maxR = radius2+2.0f;
-
-            float result;
-            std::list<float> backLeftMinX, backLeftMinZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, 265.0f, minR, (float)angle, backLeftMinX, backLeftMinZ))){
-                backLeftMinX.clear();
-                backLeftMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, minR, (float)angle, backLeftMinX, backLeftMinZ))){
-                    assert(0);
-                }
-            }
-
-            std::list<float> backLeftMaxX, backLeftMaxZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, 265.0f, maxR, (float)angle, backLeftMaxX, backLeftMaxZ))){
-                backLeftMaxX.clear();
-                backLeftMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, maxR, (float)angle, backLeftMaxX, backLeftMaxZ))){
-                    assert(0);
-                }
-            }
-
-            //-----------back right------------------------
-            float radius3 = 265.0f / (sin(glm::radians(float((angle-180)))) / cos(glm::radians(float((angle-180))))) - 89.0f;
-            minR = radius3-2.0f;
-            maxR = radius3+2.0f;
-
-            std::list<float> backRightMinX, backRightMinZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, 265.0f, minR, (float)angle, backRightMinX, backRightMinZ))){
-                backRightMinX.clear();
-                backRightMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, minR, (float)angle, backRightMinX, backRightMinZ))){
-                    assert(0);
-                }
-            }
-
-            std::list<float> backRightMaxX, backRightMaxZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, 265.0f, maxR, (float)angle, backRightMaxX, backRightMaxZ))){
-                backRightMaxX.clear();
-                backRightMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, maxR, (float)angle, backRightMaxX, backRightMaxZ))){
-                    assert(0);
-                }
-            }
-
-            generateAreaVertexArrayRear(vertexArray, areaVertexArray,
-                                    frontLeftMinX, frontLeftMinZ,
-                                    frontLeftMaxX, frontLeftMaxZ,
-                                    backLeftMinX, backLeftMinZ,
-                                    backLeftMaxX, backLeftMaxZ,
-                                    backRightMinX, backRightMinZ,
-                                    backRightMaxX, backRightMaxZ,
-                                    (float)angle);
-
-            if(angle == 225){
-                generateMaxAngleLineVertexArray(maxAngleLineVertexArray,
-                                        backLeftMinX, backLeftMinZ,
-                                        backLeftMaxX, backLeftMaxZ,
-                                        (float)angle);
-            }
-
-            frontLeftMinX.clear();
-            frontLeftMinZ.clear();
-            frontLeftMaxX.clear();
-            frontLeftMaxZ.clear();
-            backLeftMinX.clear();
-            backLeftMinZ.clear();
-            backLeftMaxX.clear();
-            backLeftMaxZ.clear();
-            backRightMinX.clear();
-            backRightMinZ.clear();
-            backRightMaxX.clear();
-            backRightMaxZ.clear();
-        }
-
-
-        if(angle < 180) {
-            //-----------front right------------------------
-            float radius1 = pow(pow((265.0f / (sin(glm::radians(float(abs(angle-180)))) / cos(glm::radians(float(abs(angle-180))))) + 89), 2) + pow(265, 2), 0.5);
-            float minR = radius1-2.0f;
-            float maxR = radius1+2.0f;
-
-            float result;
-            std::list<float> frontRightMinX, frontRightMinZ;
-            AppendVertexArrayEx(131.0f, -130.0f, minR, (float)angle, frontRightMinX, frontRightMinZ);
-
-            std::list<float> frontRightMaxX, frontRightMaxZ;
-            AppendVertexArrayEx(131.0f, -130.0f, maxR, (float)angle, frontRightMaxX, frontRightMaxZ);
-
-            //-----------back left------------------------
-            float radius2 = 265.0f / (sin(glm::radians(float(abs(angle-180)))) / cos(glm::radians(float(abs(angle-180))))) - 89.0f;
-            minR = radius2-2.0f;
-            maxR = radius2+2.0f;
-
-            std::list<float> backLeftMinX, backLeftMinZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, -265.0f, minR, (float)angle, backLeftMinX, backLeftMinZ))){
-                backLeftMinX.clear();
-                backLeftMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, minR, (float)angle, backLeftMinX, backLeftMinZ))){
-                    assert(0);
-                }
-            }
-
-            std::list<float> backLeftMaxX, backLeftMaxZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, -265.0f, maxR, (float)angle, backLeftMaxX, backLeftMaxZ))){
-                backLeftMaxX.clear();
-                backLeftMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, maxR, (float)angle, backLeftMaxX, backLeftMaxZ))){
-                    assert(0);
-                }
-            }
-
-            //-----------back right------------------------
-            float radius3 = 265.0f / (sin(glm::radians(float(abs(angle-180)))) / cos(glm::radians(float(abs(angle-180))))) + 89.0f;
-            minR = radius3-2.0f;
-            maxR = radius3+2.0f;
-
-            std::list<float> backRightMinX, backRightMinZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, -265.0f, minR, (float)angle, backRightMinX, backRightMinZ))){
-                backRightMinX.clear();
-                backRightMinZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, minR, (float)angle, backRightMinX, backRightMinZ))){
-                    assert(0);
-                }
-            }
-
-            std::list<float> backRightMaxX, backRightMaxZ;
-            if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, -265.0f, maxR, (float)angle, backRightMaxX, backRightMaxZ))){
-                backRightMaxX.clear();
-                backRightMaxZ.clear();
-                if(0.0f != (result = AppendVertexArray(-134.0f, -500.0f, result, maxR, (float)angle, backRightMaxX, backRightMaxZ))){
-                    assert(0);
-                }
-            }
-
-            generateAreaVertexArrayRear(vertexArray, areaVertexArray,
-                                    frontRightMinX, frontRightMinZ,
-                                    frontRightMaxX, frontRightMaxZ,
-                                    backLeftMinX, backLeftMinZ,
-                                    backLeftMaxX, backLeftMaxZ,
-                                    backRightMinX, backRightMinZ,
-                                    backRightMaxX, backRightMaxZ,
-                                    (float)angle);
-
-            if(angle == 135){
-                generateMaxAngleLineVertexArray(maxAngleLineVertexArray,
-                                        backRightMinX, backRightMinZ,
-                                        backRightMaxX, backRightMaxZ,
-                                        (float)angle);
-            }
-
-            frontRightMinX.clear();
-            frontRightMinZ.clear();
-            frontRightMaxX.clear();
-            frontRightMaxZ.clear();
-            backLeftMinX.clear();
-            backLeftMinZ.clear();
-            backLeftMaxX.clear();
-            backLeftMaxZ.clear();
-            backRightMinX.clear();
-            backRightMinZ.clear();
-            backRightMaxX.clear();
-            backRightMaxZ.clear();
-        }
-    }
+    // //----------test line --------------------
+    // unsigned int testLineVBO, testLineVAO;
+    // glGenVertexArrays(1, &testLineVAO);
+    // glGenBuffers(1, &testLineVBO);
+    // glBindVertexArray(testLineVAO);
+    // glBindBuffer(GL_ARRAY_BUFFER, testLineVBO);
+    // glBufferData(GL_ARRAY_BUFFER, sizeof(float) * lineVertexArray.size(), lineVertexArray.data(), GL_STATIC_DRAW);
+    // glEnableVertexAttribArray(0);
+    // glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    // glEnableVertexAttribArray(1);
+    // glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(4 * sizeof(float)));
+    // glBindVertexArray(0);
+    // //----------test line --------------------
 
     unsigned int circleVBO, circleVAO;
     glGenVertexArrays(1, &circleVAO);
@@ -1200,6 +946,73 @@ int main()
 
     // ---------------------------Dynimic Line vertex data------------------------------end
 
+    //----------------------------Dynimic Line--------------------------------------begine
+    unsigned int dynimicLineVBO, dynimicLineVAO;
+    glGenVertexArrays(1, &dynimicLineVAO);
+    glGenBuffers(1, &dynimicLineVBO);
+    glBindVertexArray(dynimicLineVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, dynimicLineVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(dynimicLineVertices), dynimicLineVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glBindVertexArray(0);
+    //----------------------------Dynimic Line--------------------------------------end
+
+    //----------------------------Dynimic Line middle area--------------------------------------begine
+    unsigned int dynimicLineAreaVAO;
+    glGenVertexArrays(1, &dynimicLineAreaVAO);
+    glBindVertexArray(dynimicLineAreaVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, dynimicLineVBO);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(24*3 * sizeof(float)));
+    glBindVertexArray(0);
+    //----------------------------Dynimic Line middle area--------------------------------------end
+
+
+    // ---------------------------zhou ju vertex data------------------------------begine
+    float zhoujuvertices[] = {
+        -134.0f,  0.11f, -89.0f,
+        131.0f,   0.11f, -89.0f,
+
+        131.0f,   0.11f, -89.0f,
+        131.0f,   0.11f,  89.0f,
+
+        131.0f,   0.11f,  89.0f,
+        -134.0f,  0.11f,  89.0f,
+
+        -134.0f,  0.11f,  89.0f,
+        -134.0f,  0.11f, -89.0f,
+
+        -134.0f,  0.11f,  89.0f,
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(45.0f)) / cos(glm::radians(45.0f))),
+
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(45.0f)) / cos(glm::radians(45.0f))),
+        131.0f,   0.11f,  89.0f,
+
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(45.0f)) / cos(glm::radians(45.0f))),
+        131.0f,   0.11f, -89.0f,
+
+        -134.0f,  0.11f,  89.0f,
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(25.0f)) / cos(glm::radians(25.0f))),
+
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(25.0f)) / cos(glm::radians(25.0f))),
+        131.0f,   0.11f,  89.0f,
+
+        -134.0f,  0.11f,  265.0f / (sin(glm::radians(25.0f)) / cos(glm::radians(25.0f))),
+        131.0f,   0.11f, -89.0f,
+    };
+
+    unsigned int zhouJuLineVBO, zhouJuLineVAO;
+    glGenVertexArrays(1, &zhouJuLineVAO);
+    glGenBuffers(1, &zhouJuLineVBO);
+    glBindVertexArray(zhouJuLineVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, zhouJuLineVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(zhoujuvertices), zhoujuvertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+    // ---------------------------zhou ju vertex data------------------------------begine
+
 
     // ---------------------------color block vertex data------------------------------begine
     float vertices[] = {  // x, y, z, alpha
@@ -1226,6 +1039,7 @@ int main()
         0.5f,  0.0f,  0.5f, 0.8f,  // G
     };
     // ---------------------------color block vertex data------------------------------end
+
 
     //----------------------------radar rectangular Area--------------------------------------begine
     unsigned int radarRectangularVBO, radarRectangularAreaVAO;
@@ -1254,7 +1068,7 @@ int main()
     //----------------------------radar rectangular Line--------------------------------------end
 
 
-    // ---------------------------ground------------------------------begine
+    // ---------------------------ground vertex data & texture data------------------------------begine
     float planeVertices[] = {
         // positions x,y,z   //texture x, y
         5.0f,  0.0f,  5.0f,  2.0f, 0.0f,
@@ -1265,7 +1079,9 @@ int main()
         -5.0f, 0.0f, -5.0f,  0.0f, 2.0f,
         5.0f,  0.0f, -5.0f,  2.0f, 2.0f
     };
+    // ---------------------------ground vertex data & texture data------------------------------begine
 
+    // ---------------------------ground------------------------------begine
     unsigned int groundVAO, groundVBO;
     glGenVertexArrays(1, &groundVAO);
     glGenBuffers(1, &groundVBO);
@@ -1293,40 +1109,6 @@ int main()
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        float wheelAngle = wheelAngleArray.front();
-        wheelAngleArray.pop_front();
-
-    /*{
-        //------------------------------------------top view--------------------------------------------------------------
-        const float Yaw_top = 180.0f;
-        const float Pitch_top = 89.0f;
-        const float radius_top = 900.0;
-        const glm::vec3 at_top = glm::vec3(0.0f, 0.0f, 0.0f);
-
-
-        glViewport(0, 0, (GLsizei)640, (GLsizei)720);
-
-
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)640 / (float)720, 0.1f, 1000.0f);
-
-        float camX = cos(glm::radians(Yaw_top)) * cos(glm::radians(Pitch_top)) * radius_top;
-        float camY = sin(glm::radians(Pitch_top)) * radius_top;
-        float camZ = sin(glm::radians(Yaw_top)) * cos(glm::radians(Pitch_top)) * radius_top;
-
-        glm::vec3 camera = glm::vec3(camX, camY, camZ);
-
-        glm::mat4 view = glm::lookAt(camera*0.07f, at_top*0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
-        // printf("camX = %f, camY = %f, camZ = %f, radius = %f, Yaw = %f, Pitch = %f, at.x = %f, at.z = %f, defaultAreaMin=%f, defaultAreaMax=%f\n",
-        //         camX, camY, camZ, radius, Yaw, Pitch, at.x, at.z,defaultAreaMin, defaultAreaMax);
-
-    }
-    */
-
-
-        //------------------------------------------right view--------------------------------------------------------------
-
-        glViewport(640, 0, (GLsizei)1280, (GLsizei)720);
-
 
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 1000.0f);
 
@@ -1345,10 +1127,11 @@ int main()
         groundShader.setInt("texture1", 0);
         groundShader.setMat4("projection", projection);
         groundShader.setMat4("view", view);
+
         glBindVertexArray(groundVAO);
         glBindTexture(GL_TEXTURE_2D, floorTexture);
         glm::mat4 modelGround = glm::mat4(1.0);
-        modelGround = glm::scale(modelGround, glm::vec3(60.0f, 60.0f, 60.0f));
+        modelGround = glm::scale(modelGround, glm::vec3(60.0f, 60.0f, 60.0f));   // it's a bit too big for our scene, so scale it down
         groundShader.setMat4("model", modelGround);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
@@ -1359,78 +1142,106 @@ int main()
         carShader.setMat4("projection", projection);
         carShader.setMat4("view", view);
         glm::mat4 model = glm::mat4(1.0);
-        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));   // it's a bit too big for our scene, so scale it down
         carShader.setMat4("model", model);
         ourModel.Draw(carShader);
 
+        //--------------------draw Dynimic Line-------------------
+        // dynimicLineShader.use();
+        // dynimicLineShader.setMat4("view", view);
+        // dynimicLineShader.setMat4("projection", projection);
+        // dynimicLineShader.setVec3("color", 0.0f, 1.0f, 0.0f);
+        // dynimicLineShader.setFloat("_alpa", 1.0f);
+        // dynimicLineShader.setMat4("model", model);
+        // glBindVertexArray(dynimicLineVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 24);
+        // glBindVertexArray(dynimicLineAreaVAO);
+        // dynimicLineShader.setVec3("color", 0.0f, 0.0f, 1.0f);
+        // dynimicLineShader.setFloat("_alpa", 0.3f);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //Maximum Angle of rotation
-        shaderProgram.use();
-        shaderProgram.setMat4("view", view);
-        shaderProgram.setMat4("projection", projection);
-        shaderProgram.setMat4("model", model);
+        wheelAngle += 1.0f;
+        if(wheelAngle > 45.0f){
+            wheelAngle = -45.0f;
+        }
 
-        shaderProgram.setVec3("color", 1.0f, 0.0f, 0.0f);
-        if(wheelAngle == 45.0f || wheelAngle == -45.0f || wheelAngle == 135.0f || wheelAngle == 225.0f){
+        /*
+        shaderProgramMaxAngle.use();
+        shaderProgramMaxAngle.setMat4("view", view);
+        shaderProgramMaxAngle.setMat4("projection", projection);
+        shaderProgramMaxAngle.setMat4("model", model);
+        shaderProgramMaxAngle.setVec3("color", 1.0f, 0.0f, 0.0f);
+        if(wheelAngle == 0.0f){
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
+            glBindVertexArray(maxAngleVAO);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
+            glBindVertexArray(maxAngleVAO);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle == 45.0f){
             ;
-        }else if(wheelAngle == 0.0f){
-            shaderProgram.setFloat("Index", 45.0f);
+        }else if(wheelAngle == -45.0f){
+            ;
+        }else if(wheelAngle > 0.0f){
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
             glBindVertexArray(maxAngleVAO);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-
-            shaderProgram.setFloat("Index", -45.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle > 0.0f && wheelAngle < 45.0f){
-            shaderProgram.setFloat("Index", 45.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle < 0.0f && wheelAngle > -45.0f){
-            shaderProgram.setFloat("Index", -45.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle == 180.0f){
-            shaderProgram.setFloat("Index", 135.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-
-            shaderProgram.setFloat("Index", 225.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle > 135.0f && wheelAngle < 180.0f){
-            shaderProgram.setFloat("Index", 135.0f);
-            glBindVertexArray(maxAngleVAO);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle < 225.0f && wheelAngle > 180.0f){
-            shaderProgram.setFloat("Index", 225.0f);
+        }else if(wheelAngle < 0.0f){
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
             glBindVertexArray(maxAngleVAO);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else{
             assert(0);
         }
-
+        */
 
         // draw Dynimic Line circle
-        //shaderProgram.use();
-        //shaderProgram.setMat4("view", view);
-        //shaderProgram.setMat4("projection", projection);
-        //shaderProgram.setMat4("model", model);
+        shaderProgram.use();
+        shaderProgram.setMat4("view", view);
+        shaderProgram.setMat4("projection", projection);
+        shaderProgram.setMat4("model", model);
+        std::cout << "wheelAngle = " << wheelAngle << std::endl;
         shaderProgram.setFloat("Index", wheelAngle);
         shaderProgram.setVec3("color", 0.0f, 1.0f, 0.0f);
         glBindVertexArray(circleVAO);
         glDrawArrays(GL_TRIANGLES, 0, RectangleNum*6);
 
 
-        //shaderProgramArea.use();
-        //shaderProgramArea.setMat4("view", view);
-        //shaderProgramArea.setMat4("projection", projection);
-        //shaderProgramArea.setMat4("model", model);
-        //shaderProgramArea.setFloat("Index", wheelAngle);
-        //shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
-        //shaderProgramArea.setFloat("u_alpha", 0.05f);
-        //glBindVertexArray(areaVAO);
-        //glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
+        /*
+        shaderProgramArea.use();
+        shaderProgramArea.setMat4("view", view);
+        shaderProgramArea.setMat4("projection", projection);
+        shaderProgramArea.setMat4("model", model);
+        shaderProgramArea.setFloat("Index", wheelAngle);
 
+        shaderProgramArea.setVec3("color", 0.0f, 0.0f, 1.0f);
+        shaderProgramArea.setFloat("u_alpha", 0.05f);
+
+        glBindVertexArray(areaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
+        */
+
+        //--------------testline-------------------
+        // glBindVertexArray(testLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, lineVertexArray.size()/5);
+        //--------------testline-------------------
+
+
+
+        glLineWidth(3);
+
+        //--------------------------zhou ju----------------------------------
+        // dynimicLineShader.use();
+        // dynimicLineShader.setMat4("view", view);
+        // dynimicLineShader.setMat4("projection", projection);
+        // dynimicLineShader.setVec3("color", 1.0f, 0.0f, 0.0f);
+        // dynimicLineShader.setFloat("_alpa", 1.0f);
+        // dynimicLineShader.setMat4("model", model);
+        // glBindVertexArray(zhouJuLineVAO);
+        // glDrawArrays(GL_LINES, 0, 20);
+
+        glLineWidth(1);
 
         //--------------------draw color block-------------------
         radarShader.use();
@@ -1768,17 +1579,19 @@ int main()
         //--------------------on screen-------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
-
-
-        wheelAngleArray.push_back(wheelAngle);
     }
 
     glDeleteVertexArrays(1, &radarRectangularAreaVAO);
     glDeleteVertexArrays(1, &radarRectangularLineVAO);
     glDeleteVertexArrays(1, &groundVAO);
+    glDeleteVertexArrays(1, &dynimicLineVAO);
+    glDeleteVertexArrays(1, &dynimicLineAreaVAO);
+    glDeleteVertexArrays(1, &zhouJuLineVAO);
     glDeleteVertexArrays(1, &areaVAO);
     glDeleteBuffers(1, &radarRectangularVBO);
     glDeleteBuffers(1, &groundVBO);
+    glDeleteBuffers(1, &dynimicLineVBO);
+    glDeleteBuffers(1, &zhouJuLineVBO);
     glDeleteBuffers(1, &areaVBO);
 
     glDeleteVertexArrays(1, &circleVAO);

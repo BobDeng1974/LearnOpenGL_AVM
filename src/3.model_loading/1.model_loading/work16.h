@@ -176,7 +176,24 @@ float AppendVertexArray(float beginX, float endX,
         assert(0);
     }
 
+    //assert((_endX > 0.0f && endX > 0.0f) || (_endX < 0.0f && endX < 0.0f));
+
+    // if(_endX > 0.0f && endX > 0.0f){
+    //     _endX = min(_endX, endX);
+    // }
+
+    // if(_endX < 0.0f && endX < 0.0f){
+    //     _endX = max(_endX, endX);
+    // }
+
     float lengthX = abs(_endX - beginX);
+
+
+    // std::cout << " x0 = " << x0 << " z0 = " << z0 << " _radius = " << _radius << " angle = " << _angle << endl;
+    // std::cout << " beginZ = " << beginZ <<  " endZ = " << endZ <<  " lengthZ = " << lengthZ << endl;
+    // std::cout << " beginX = " << beginX <<  " _endX = " << _endX <<  " lengthX = " << lengthX << endl;
+
+
 
     if(lengthZ <=  lengthX){
         //an zhao X fen 100 fen
@@ -1295,6 +1312,8 @@ int main()
 
         float wheelAngle = wheelAngleArray.front();
         wheelAngleArray.pop_front();
+
+        std::cout << "wheelAngle = " << wheelAngle << std::endl;
 
     /*{
         //------------------------------------------top view--------------------------------------------------------------
