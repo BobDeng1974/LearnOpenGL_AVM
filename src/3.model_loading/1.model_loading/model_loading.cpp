@@ -29,8 +29,9 @@
 const float PI = 3.14159265359;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-// void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 // void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 void processInput(GLFWwindow *window);
 
 const unsigned int SCREEN_WIDTH = 1920;
@@ -42,6 +43,26 @@ const unsigned int TOP_VIEW_HEIGHT = 720;
 // settings
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
+
+unsigned int currentCursorX;
+unsigned int currentCursorY;
+
+int cameraUpLeft = 0;
+int cameraUp = 0;
+int cameraUpRight = 0;
+
+int cameraDownLeft = 0;
+int cameraDown = 0;
+int cameraDownRight = 0;
+
+int cameraLeft = 0;
+int cameraRight = 0;
+
+int cameraLeftUp2Down = 0;
+int cameraRightUp2Down = 0;
+
+int cameraLeftDown2Up = 0;
+int cameraRightDown2Up = 0;
 
 // camera
 Camera camera(glm::vec3(0.0f, 20.0f, 30.0f));
@@ -708,8 +729,9 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    //glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetCursorPosCallback(window, mouse_callback);
     //glfwSetScrollCallback(window, scroll_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
 
     // tell GLFW to capture our mouse
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -740,7 +762,9 @@ int main()
     //Shader dynimicLineShader("dynimic_line.vs", "dynimic_line.fs");
     Shader shaderProgram("dynimic_line.vs", "dynimic_line.fs");
     //Shader shaderProgramArea("dynimic_line_area.vs", "dynimic_line_area.fs");
-    //Shader shaderProgramMaxAngle("dynimic_line_max_angle.vs", "dynimic_line_max_angle.fs");
+    Shader shaderProgramMaxAngle("dynimic_line_max_angle.vs", "dynimic_line_max_angle.fs");
+    Shader shaderCamera("3.1.blending.vs", "3.1.blending.fs");
+    Shader shaderTest("test.vs", "test.fs");
     // ------------------------------build and compile shaders------------------------end
 
     std::vector<float> maxAngleLineVertexArray;
@@ -1278,7 +1302,36 @@ int main()
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glBindVertexArray(0);
     unsigned int floorTexture = loadTexture(FileSystem::getPath("resources/textures/metal.png").c_str());
+    unsigned int transparentTexture = loadTexture(FileSystem::getPath("resources/textures/grass.png").c_str());
+
+    unsigned int cameraNoChoosedTexture = loadTexture(FileSystem::getPath("resources/textures/camera_no_choosed.png").c_str());
+    unsigned int cameraChoosedTexture = loadTexture(FileSystem::getPath("resources/textures/camera_choosed.png").c_str());
+
     // ---------------------------ground------------------------------end
+
+    float transparentVertices[] = {
+        // positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
+        -1.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+        -1.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+        1.0f, -1.0f,  0.0f,  1.0f,  1.0f,
+
+        -1.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+        1.0f, -1.0f,  0.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  0.0f,  1.0f,  0.0f
+    };
+    // transparent VAO
+    unsigned int transparentVAO, transparentVBO;
+    glGenVertexArrays(1, &transparentVAO);
+    glGenBuffers(1, &transparentVBO);
+    glBindVertexArray(transparentVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, transparentVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(transparentVertices), transparentVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glBindVertexArray(0);
+
 
     // render loop
     float degree = 0.0f;
@@ -1296,8 +1349,8 @@ int main()
         float wheelAngle = wheelAngleArray.front();
         wheelAngleArray.pop_front();
 
-    /*{
-        //------------------------------------------top view--------------------------------------------------------------
+    {
+        // //------------------------------------------top view--------------------------------------------------------------
         const float Yaw_top = 180.0f;
         const float Pitch_top = 89.0f;
         const float radius_top = 900.0;
@@ -1316,11 +1369,577 @@ int main()
         glm::vec3 camera = glm::vec3(camX, camY, camZ);
 
         glm::mat4 view = glm::lookAt(camera*0.07f, at_top*0.05f, glm::vec3(0.0f, 1.0f, 0.0f));
-        // printf("camX = %f, camY = %f, camZ = %f, radius = %f, Yaw = %f, Pitch = %f, at.x = %f, at.z = %f, defaultAreaMin=%f, defaultAreaMax=%f\n",
-        //         camX, camY, camZ, radius, Yaw, Pitch, at.x, at.z,defaultAreaMin, defaultAreaMax);
+        // // printf("camX = %f, camY = %f, camZ = %f, radius = %f, Yaw = %f, Pitch = %f, at.x = %f, at.z = %f, defaultAreaMin=%f, defaultAreaMax=%f\n",
+        // //         camX, camY, camZ, radius, Yaw, Pitch, at.x, at.z,defaultAreaMin, defaultAreaMax);
+
+        // --------------------draw ground------------------
+        groundShader.use();
+        //groundShader.setInt("texture1", 0);
+        groundShader.setMat4("projection", projection);
+        groundShader.setMat4("view", view);
+        glBindVertexArray(groundVAO);
+        glBindTexture(GL_TEXTURE_2D, floorTexture);
+        glm::mat4 modelGround = glm::mat4(1.0);
+        modelGround = glm::scale(modelGround, glm::vec3(60.0f, 60.0f, 60.0f));
+        groundShader.setMat4("model", modelGround);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+
+        //------------------------draw car---------------------
+        carShader.use();
+        carShader.setMat4("projection", projection);
+        carShader.setMat4("view", view);
+        glm::mat4 model = glm::mat4(1.0);
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        carShader.setMat4("model", model);
+        ourModel.Draw(carShader);
+
+        //------------------------draw Maximum Angle of rotation---------------------
+        shaderProgramMaxAngle.use();
+        shaderProgramMaxAngle.setMat4("view", view);
+        shaderProgramMaxAngle.setMat4("projection", projection);
+        shaderProgramMaxAngle.setMat4("model", model);
+
+        shaderProgramMaxAngle.setVec3("color", 1.0f, 0.0f, 0.0f);
+        glBindVertexArray(maxAngleVAO);
+
+        if(wheelAngle == 45.0f || wheelAngle == -45.0f || wheelAngle == 135.0f || wheelAngle == 225.0f){
+            ;
+        }else if(wheelAngle == 0.0f){
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle > 0.0f && wheelAngle < 45.0f){
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle < 0.0f && wheelAngle > -45.0f){
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle == 180.0f){
+            shaderProgramMaxAngle.setFloat("Index", 135.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            shaderProgramMaxAngle.setFloat("Index", 225.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle > 135.0f && wheelAngle < 180.0f){
+            shaderProgramMaxAngle.setFloat("Index", 135.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else if(wheelAngle < 225.0f && wheelAngle > 180.0f){
+            shaderProgramMaxAngle.setFloat("Index", 225.0f);
+            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+        }else{
+            assert(0);
+        }
+
+        //------------------------draw Dynimic Line---------------------
+        shaderProgram.use();
+        shaderProgram.setMat4("view", view);
+        shaderProgram.setMat4("projection", projection);
+        shaderProgram.setMat4("model", model);
+        shaderProgram.setFloat("Index", wheelAngle);
+        shaderProgram.setVec3("color", 0.0f, 1.0f, 0.0f);
+        glBindVertexArray(circleVAO);
+        glDrawArrays(GL_TRIANGLES, 0, RectangleNum*6);
+
+        //------------------------draw Dynimic Line area---------------------
+        // shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
+        // glBindVertexArray(areaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
+
+
+
+
+        //--------------------draw color block-------------------
+        radarShader.use();
+        radarShader.setMat4("view", view);
+        radarShader.setMat4("projection", projection);
+        radarShader.setVec3("color", r, g, 0.0f);
+
+        //--------------------------------- front -----------------------
+        glm::mat4 model2;
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance-0.5f, 0.0f, -3.0f));
+        model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, -1.7f));
+        model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -0.5f));
+        model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 0.5f));
+        model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, 1.7f));
+        model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(_distance-0.5f, 0.0f, 3.0f));
+        model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        //--------------------------------- back -----------------------
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, -5.0f));
+        model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, -2.7f));
+        model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, -1.0f));
+        model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, 1.0f));
+        model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, 2.7f));
+        model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, 5.0f));
+        model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        //--------------------------------- left -----------------------
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, (-1) * _distance + 7));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+
+
+        //--------------------------------- right -----------------------
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        model2 = glm::mat4(1.0);
+        model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, _distance - 1));
+        model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        radarShader.setMat4("model", model2);
+        glBindVertexArray(radarRectangularLineVAO);
+        glDrawArrays(GL_LINE_STRIP, 0, 4);
+        glBindVertexArray(radarRectangularAreaVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        shaderCamera.use();
+
+        assert(cameraUpLeft + cameraUp + cameraUpRight + cameraDownLeft + cameraDown + cameraDownRight + cameraLeft + cameraRight + cameraLeftUp2Down + cameraRightUp2Down + cameraLeftDown2Up + cameraRightDown2Up <= 1);
+
+        //left
+        glm::mat4 modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(-6.0f, 0.0f, 0.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraLeft == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        // //right
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(6.0f, 0.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraRight == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //up
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraUp == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //down
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(270.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraDown == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //down left
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(-6.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraDownLeft == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //down right
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(6.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(135.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraDownRight == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //up right
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(6.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(225.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraUpRight == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //up left
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(-6.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(315.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraUpLeft == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //left up -> down
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(-4.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 5.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(270.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraLeftUp2Down == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //right up -> down
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(4.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 5.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(270.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraRightUp2Down == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //right down -> up
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(4.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -5.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraRightDown2Up == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //left down -> up
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(-4.0f, 0.0f, 0.0f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -5.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraLeftDown2Up == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
 
     }
-    */
+
 
 
         //------------------------------------------right view--------------------------------------------------------------
@@ -1342,7 +1961,7 @@ int main()
 
         // --------------------draw ground------------------
         groundShader.use();
-        groundShader.setInt("texture1", 0);
+        //groundShader.setInt("texture1", 0);
         groundShader.setMat4("projection", projection);
         groundShader.setMat4("view", view);
         glBindVertexArray(groundVAO);
@@ -1363,73 +1982,59 @@ int main()
         carShader.setMat4("model", model);
         ourModel.Draw(carShader);
 
+        //------------------------draw Maximum Angle of rotation---------------------
+        shaderProgramMaxAngle.use();
+        shaderProgramMaxAngle.setMat4("view", view);
+        shaderProgramMaxAngle.setMat4("projection", projection);
+        shaderProgramMaxAngle.setMat4("model", model);
 
-        //Maximum Angle of rotation
-        shaderProgram.use();
-        shaderProgram.setMat4("view", view);
-        shaderProgram.setMat4("projection", projection);
-        shaderProgram.setMat4("model", model);
+        shaderProgramMaxAngle.setVec3("color", 1.0f, 0.0f, 0.0f);
+        glBindVertexArray(maxAngleVAO);
 
-        shaderProgram.setVec3("color", 1.0f, 0.0f, 0.0f);
         if(wheelAngle == 45.0f || wheelAngle == -45.0f || wheelAngle == 135.0f || wheelAngle == 225.0f){
             ;
         }else if(wheelAngle == 0.0f){
-            shaderProgram.setFloat("Index", 45.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-
-            shaderProgram.setFloat("Index", -45.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else if(wheelAngle > 0.0f && wheelAngle < 45.0f){
-            shaderProgram.setFloat("Index", 45.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 45.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else if(wheelAngle < 0.0f && wheelAngle > -45.0f){
-            shaderProgram.setFloat("Index", -45.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", -45.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else if(wheelAngle == 180.0f){
-            shaderProgram.setFloat("Index", 135.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 135.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-
-            shaderProgram.setFloat("Index", 225.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 225.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else if(wheelAngle > 135.0f && wheelAngle < 180.0f){
-            shaderProgram.setFloat("Index", 135.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 135.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else if(wheelAngle < 225.0f && wheelAngle > 180.0f){
-            shaderProgram.setFloat("Index", 225.0f);
-            glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setFloat("Index", 225.0f);
             glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
         }else{
             assert(0);
         }
 
-
-        // draw Dynimic Line circle
-        //shaderProgram.use();
-        //shaderProgram.setMat4("view", view);
-        //shaderProgram.setMat4("projection", projection);
-        //shaderProgram.setMat4("model", model);
+        //------------------------draw Dynimic Line---------------------
+        shaderProgram.use();
+        shaderProgram.setMat4("view", view);
+        shaderProgram.setMat4("projection", projection);
+        shaderProgram.setMat4("model", model);
         shaderProgram.setFloat("Index", wheelAngle);
         shaderProgram.setVec3("color", 0.0f, 1.0f, 0.0f);
         glBindVertexArray(circleVAO);
         glDrawArrays(GL_TRIANGLES, 0, RectangleNum*6);
 
+        //------------------------draw Dynimic Line area---------------------
+        // shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
+        // glBindVertexArray(areaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
 
-        //shaderProgramArea.use();
-        //shaderProgramArea.setMat4("view", view);
-        //shaderProgramArea.setMat4("projection", projection);
-        //shaderProgramArea.setMat4("model", model);
-        //shaderProgramArea.setFloat("Index", wheelAngle);
-        //shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
-        //shaderProgramArea.setFloat("u_alpha", 0.05f);
-        //glBindVertexArray(areaVAO);
-        //glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
+
 
 
         //--------------------draw color block-------------------
@@ -1769,7 +2374,6 @@ int main()
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-
         wheelAngleArray.push_back(wheelAngle);
     }
 
@@ -1777,12 +2381,15 @@ int main()
     glDeleteVertexArrays(1, &radarRectangularLineVAO);
     glDeleteVertexArrays(1, &groundVAO);
     glDeleteVertexArrays(1, &areaVAO);
+    glDeleteVertexArrays(1, &circleVAO);
+    glDeleteVertexArrays(1, &transparentVAO);
+
+    glDeleteBuffers(1, &circleVBO);
     glDeleteBuffers(1, &radarRectangularVBO);
     glDeleteBuffers(1, &groundVBO);
     glDeleteBuffers(1, &areaVBO);
+    glDeleteBuffers(1, &transparentVBO);
 
-    glDeleteVertexArrays(1, &circleVAO);
-    glDeleteBuffers(1, &circleVBO);
 
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
@@ -1824,110 +2431,109 @@ void processInput(GLFWwindow *window)
     }
 
 //----------------------------------------------------------------
-    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
-        //hou zuo
-        Yaw = 220.0f;
-        Pitch = 28.0f;
-        radius = 700.0f;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+    //     //hou zuo
+    //     Yaw = 220.0f;
+    //     Pitch = 28.0f;
+    //     radius = 700.0f;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
-        //hou you
-        Yaw = 140.0f;
-        Pitch = 28.0f;
-        radius = 700.0f;
-        //at = glm::vec3(-1556.0f, 214.0f, -657.0f);
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+    //     //hou you
+    //     Yaw = 140.0f;
+    //     Pitch = 28.0f;
+    //     radius = 700.0f;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
-        //qian zuo
-        Yaw = 319.0f;
-        Pitch = 28.0f;
-        radius = 700.0f;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
+    //     //qian zuo
+    //     Yaw = 319.0f;
+    //     Pitch = 28.0f;
+    //     radius = 700.0f;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
-        //qian you
-        Yaw = 41.0f;
-        Pitch = 28.0f;
-        radius = 700.0f;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
+    //     //qian you
+    //     Yaw = 41.0f;
+    //     Pitch = 28.0f;
+    //     radius = 700.0f;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS) {
-        //ding
-        Yaw = 180.0f;
-        Pitch = 89.0f;
-        radius = 900.0;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 180.0f;
+    //     Pitch = 89.0f;
+    //     radius = 900.0;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS) {
-        //qian
-        Yaw = 0.0f;
-        Pitch = 119.0f;
-        radius = 400.0;
-        at = glm::vec3(-366.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS) {
+    //     //qian
+    //     Yaw = 0.0f;
+    //     Pitch = 119.0f;
+    //     radius = 400.0;
+    //     at = glm::vec3(-366.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
-        //hou
-        Yaw = 180.0f;
-        Pitch = 119.0f;
-        radius = 400.0;
-        at = glm::vec3(366.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS) {
+    //     //hou
+    //     Yaw = 180.0f;
+    //     Pitch = 119.0f;
+    //     radius = 400.0;
+    //     at = glm::vec3(366.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
-        //ding
-        Yaw = 90.0f;
-        Pitch = 45.0f;
-        radius = 700.0;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 90.0f;
+    //     Pitch = 45.0f;
+    //     radius = 700.0;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
-        //ding
-        Yaw = -90.0f;
-        Pitch = 45.0f;
-        radius = 700.0;
-        at = glm::vec3(0.0f, 0.0f, 0.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = -90.0f;
+    //     Pitch = 45.0f;
+    //     radius = 700.0;
+    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
-        //ding
-        Yaw = 194.0f;
-        Pitch = 15.0f;
-        radius = 500.0;
-        at = glm::vec3(0.0f, 0.0f, -300.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 194.0f;
+    //     Pitch = 15.0f;
+    //     radius = 500.0;
+    //     at = glm::vec3(0.0f, 0.0f, -300.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
-        //ding
-        Yaw = 166.0f;
-        Pitch = 15.0f;
-        radius = 500.0;
-        at = glm::vec3(0.0f, 0.0f, 300.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 166.0f;
+    //     Pitch = 15.0f;
+    //     radius = 500.0;
+    //     at = glm::vec3(0.0f, 0.0f, 300.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
-        //ding
-        Yaw = 346.0f;
-        Pitch = 15.0f;
-        radius = 500.0;
-        at = glm::vec3(0.0f, 0.0f, -300.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 346.0f;
+    //     Pitch = 15.0f;
+    //     radius = 500.0;
+    //     at = glm::vec3(0.0f, 0.0f, -300.0f);
+    // }
 
-    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
-        //ding
-        Yaw = 14.0f;
-        Pitch = 15.0f;
-        radius = 500.0;
-        at = glm::vec3(0.0f, 0.0f, 300.0f);
-    }
+    // if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS) {
+    //     //ding
+    //     Yaw = 14.0f;
+    //     Pitch = 15.0f;
+    //     radius = 500.0;
+    //     at = glm::vec3(0.0f, 0.0f, 300.0f);
+    // }
 
     if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS) {
         //hou
@@ -1972,4 +2578,192 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    currentCursorX = int(xpos);
+    currentCursorY = int(ypos);
 
+    printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
+}
+
+void processButtonLeftPress()
+{
+    if(currentCursorX >= 100 && currentCursorX <= 150){
+        if(currentCursorY >= 50 && currentCursorY <= 100){
+            cameraUpLeft = 1; cameraUp = cameraUpRight = 0;
+            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 319.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 330 && currentCursorY <= 380){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraLeft = 1;  cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = -90.0f;
+            Pitch = 45.0f;
+            radius = 700.0;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 620 && currentCursorY <= 670){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft = 1; cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 220.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else{
+            ;
+        }
+
+    }else if(currentCursorX >= 160 && currentCursorX <= 210){
+        if(currentCursorY >= 150 && currentCursorY <= 200){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = 1;  cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 346.0f;
+            Pitch = 15.0f;
+            radius = 500.0;
+            at = glm::vec3(0.0f, 0.0f, -300.0f);
+        }else if(currentCursorY >= 510 && currentCursorY <= 560){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = 1;  cameraRightDown2Up = 0;
+
+            Yaw = 194.0f;
+            Pitch = 15.0f;
+            radius = 500.0;
+            at = glm::vec3(0.0f, 0.0f, -300.0f);
+        }else{
+            ;
+        }
+    }else if(currentCursorX >= 300 && currentCursorX <= 350){
+        if(currentCursorY >= 50 && currentCursorY <= 100){
+            cameraUpLeft = 0; cameraUp = 1;  cameraUpRight = 0;
+            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up =  cameraRightDown2Up = 0;
+
+            Yaw = 0.0f;
+            Pitch = 119.0f;
+            radius = 400.0;
+            at = glm::vec3(-366.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 620 && currentCursorY <= 670){
+            cameraUpLeft = cameraUp =  cameraUpRight = 0;
+            cameraDownLeft = 0;  cameraDown = 1; cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up =  cameraRightDown2Up = 0;
+
+            Yaw = 180.0f;
+            Pitch = 119.0f;
+            radius = 400.0;
+            at = glm::vec3(366.0f, 0.0f, 0.0f);
+        }else{
+            ;
+        }
+    }else if(currentCursorX >= 420 && currentCursorX <= 470){
+        if(currentCursorY >= 150 && currentCursorY <= 200){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = 0;  cameraRightUp2Down = 1;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 14.0f;
+            Pitch = 15.0f;
+            radius = 500.0;
+            at = glm::vec3(0.0f, 0.0f, 300.0f);
+        }else if(currentCursorY >= 510 && currentCursorY <= 560){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = 0; cameraRightDown2Up = 1;
+
+            Yaw = 166.0f;
+            Pitch = 15.0f;
+            radius = 500.0;
+            at = glm::vec3(0.0f, 0.0f, 300.0f);
+        }else{
+            ;
+        }
+    }else if(currentCursorX >= 500 && currentCursorX <= 550){
+        if(currentCursorY >= 50 && currentCursorY <= 100){
+            cameraUpLeft = cameraUp = 0; cameraUpRight = 1;
+            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 41.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 330 && currentCursorY <= 380){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraLeft = 0; cameraRight = 1;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 90.0f;
+            Pitch = 45.0f;
+            radius = 700.0;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+
+        }else if(currentCursorY >= 620 && currentCursorY <= 670){
+            cameraUpLeft = cameraUp = cameraUpRight = 0;
+            cameraDownLeft = cameraDown = 0; cameraDownRight = 1;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up = cameraRightDown2Up = 0;
+
+            Yaw = 140.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else{
+            ;
+        }
+    }else{
+        ;
+    }
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (action == GLFW_PRESS){
+        switch(button){
+            case GLFW_MOUSE_BUTTON_LEFT:
+                std::cout << "Mosue left button clicked!" << std::endl;
+                processButtonLeftPress();
+                break;
+            case GLFW_MOUSE_BUTTON_MIDDLE:
+                std::cout << "Mosue middle button clicked!" << std::endl;
+                break;
+            case GLFW_MOUSE_BUTTON_RIGHT:
+                std::cout << "Mosue right button clicked!" << std::endl;
+                break;
+            default:
+                return;
+        }
+    }
+    return;
+}
