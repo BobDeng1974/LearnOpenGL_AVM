@@ -1393,7 +1393,11 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        ourModel.Draw(carShader);
+        if(wheelAngle >= 134.0f && wheelAngle <= 226.0f){
+            ourModel.Draw_Car(carShader, -(wheelAngle-180.0f));
+        }else{
+            ourModel.Draw_Car(carShader, -wheelAngle);
+        }
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
@@ -1980,7 +1984,11 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        ourModel.Draw(carShader);
+        if(wheelAngle >= 134.0f && wheelAngle <= 226.0f){
+            ourModel.Draw_Car(carShader, -(wheelAngle-180.0f));
+        }else{
+            ourModel.Draw_Car(carShader, -wheelAngle);
+        }
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
@@ -2583,7 +2591,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     currentCursorX = int(xpos);
     currentCursorY = int(ypos);
 
-    printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
+    //printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
 }
 
 void processButtonLeftPress()
@@ -2660,10 +2668,10 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
 
-            Yaw = 0.0f;
+            Yaw = 180.0f;
             Pitch = 119.0f;
             radius = 400.0;
-            at = glm::vec3(-366.0f, 0.0f, 0.0f);
+            at = glm::vec3(366.0f, 0.0f, 0.0f);
         }else if(currentCursorY >= 620 && currentCursorY <= 670){
             cameraUpLeft = cameraUp =  cameraUpRight = 0;
             cameraDownLeft = 0;  cameraDown = 1; cameraDownRight = 0;
@@ -2671,10 +2679,10 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
 
-            Yaw = 180.0f;
+            Yaw = 0.0f;
             Pitch = 119.0f;
             radius = 400.0;
-            at = glm::vec3(366.0f, 0.0f, 0.0f);
+            at = glm::vec3(-366.0f, 0.0f, 0.0f);
         }else{
             ;
         }
@@ -2752,14 +2760,14 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
     if (action == GLFW_PRESS){
         switch(button){
             case GLFW_MOUSE_BUTTON_LEFT:
-                std::cout << "Mosue left button clicked!" << std::endl;
+                //std::cout << "Mosue left button clicked!" << std::endl;
                 processButtonLeftPress();
                 break;
             case GLFW_MOUSE_BUTTON_MIDDLE:
-                std::cout << "Mosue middle button clicked!" << std::endl;
+                //std::cout << "Mosue middle button clicked!" << std::endl;
                 break;
             case GLFW_MOUSE_BUTTON_RIGHT:
-                std::cout << "Mosue right button clicked!" << std::endl;
+                //std::cout << "Mosue right button clicked!" << std::endl;
                 break;
             default:
                 return;

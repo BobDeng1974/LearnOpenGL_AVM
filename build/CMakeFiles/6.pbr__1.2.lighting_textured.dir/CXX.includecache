@@ -1065,6 +1065,8 @@ learnopengl/mesh.h
 -
 learnopengl/shader.h
 -
+stdio.h
+-
 string
 -
 fstream

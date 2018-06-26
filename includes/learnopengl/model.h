@@ -13,12 +13,15 @@
 #include <learnopengl/mesh.h>
 #include <learnopengl/shader.h>
 
+#include <stdio.h>
+
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <map>
 #include <vector>
+
 using namespace std;
 
 unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
@@ -29,6 +32,18 @@ public:
     /*  Model Data */
     vector<Texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
     vector<Mesh> meshes;
+
+    vector<Mesh> Wheel_01_meshes;
+    vector<Mesh> Wheel_03_meshes;
+
+    vector<Mesh> Door_L1_meshes;
+    vector<Mesh> Door_L2_meshes;
+    vector<Mesh> Door_R1_meshes;
+    vector<Mesh> Door_R2_meshes;
+
+    vector<Mesh> Door_B_meshes;
+
+
     string directory;
     bool gammaCorrection;
     int num = 0;
@@ -43,10 +58,79 @@ public:
     // draws the model, and thus all its meshes
     void Draw(Shader shader)
     {
-        cout << "meshes.size():: " << meshes.size() << endl;
-
-        for(unsigned int i = 0; i < meshes.size(); i++)
+        for(unsigned int i = 0; i < meshes.size(); i++){
             meshes[i].Draw(shader);
+        }
+    }
+
+    // draws the model, and thus all its meshes
+    void Draw_Car(Shader shader, float angle)
+    {
+        // cout << "meshes.size():: " << meshes.size() << endl;
+        // cout << "Wheel_01_meshes.size():: " << Wheel_01_meshes.size() << endl;
+        // cout << "Wheel_03_meshes.size():: " << Wheel_03_meshes.size() << endl;
+        // cout << "Door_L1_meshes.size():: " << Door_L1_meshes.size() << endl;
+        // cout << "Door_L2_meshes.size():: " << Door_L2_meshes.size() << endl;
+        // cout << "Door_R1_meshes.size():: " << Door_R1_meshes.size() << endl;
+        // cout << "Door_R2_meshes.size():: " << Door_R2_meshes.size() << endl;
+        // cout << "Door_B_meshes.size():: " << Door_B_meshes.size() << endl;
+        // cout << endl;
+        // cout << endl;
+        // cout << endl;
+
+        // meshes.size():: 32045
+        // Wheel_01_meshes.size():: 1256
+        // Wheel_03_meshes.size():: 1257
+        // Door_L1_meshes.size():: 626
+        // Door_L2_meshes.size():: 587
+        // Door_R1_meshes.size():: 626
+        // Door_R2_meshes.size():: 585
+        // Door_B_meshes.size():: 2362
+
+        for(unsigned int i = 0; i < meshes.size(); i++){
+            meshes[i].Draw(shader);
+        }
+
+        for(unsigned int i = 0; i < Door_L1_meshes.size(); i++){
+            Door_L1_meshes[i].Draw(shader);
+        }
+
+        for(unsigned int i = 0; i < Door_L2_meshes.size(); i++){
+            Door_L2_meshes[i].Draw(shader);
+        }
+
+        for(unsigned int i = 0; i < Door_R1_meshes.size(); i++){
+            Door_R1_meshes[i].Draw(shader);
+        }
+
+        for(unsigned int i = 0; i < Door_R2_meshes.size(); i++){
+            Door_R2_meshes[i].Draw(shader);
+        }
+
+        for(unsigned int i = 0; i < Door_B_meshes.size(); i++){
+            Door_B_meshes[i].Draw(shader);
+        }
+
+        glm::mat4 model = glm::mat4(1.0);
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        model = glm::translate(model, glm::vec3(131.0f, 0.0f, -89.0f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(-131.0f, 0.0f, 89.0f));
+        shader.setMat4("model", model);
+
+        for(unsigned int i = 0; i < Wheel_01_meshes.size(); i++){
+            Wheel_01_meshes[i].Draw(shader);
+        }
+
+        model = glm::mat4(1.0);
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        model = glm::translate(model, glm::vec3(131.0f, 0.0f, 89.0f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(-131.0f, 0.0f, -89.0f));
+        shader.setMat4("model", model);
+        for(unsigned int i = 0; i < Wheel_03_meshes.size(); i++){
+            Wheel_03_meshes[i].Draw(shader);
+        }
     }
 
 private:
@@ -68,21 +152,60 @@ private:
 
         // process ASSIMP's root node recursively
         processNode(scene->mRootNode, scene);
-        //cout << "node num = " << ++num << endl;
     }
 
     // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
     void processNode(aiNode *node, const aiScene *scene)
     {
-        cout << "node->mName :: " << node->mName.C_Str() << endl;
+        //cout << "node->mName :: " << node->mName.C_Str() << endl;
 
-        // process each mesh located at the current node
+        static int  Wheel_01_flag = 0;
+        static int  Wheel_03_flag = 0;
+        static int  Door_L1_flag = 0;
+        static int  Door_L2_flag = 0;
+        static int  Door_R1_flag = 0;
+        static int  Door_R2_flag = 0;
+        static int  Door_B_flag = 0;
+
         for(unsigned int i = 0; i < node->mNumMeshes; i++)
         {
             // the node object only contains indices to index the actual objects in the scene.
             // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-            meshes.push_back(processMesh(mesh, scene));
+
+
+            if((Wheel_01_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_01") == 0){
+                Wheel_01_meshes.push_back(processMesh(mesh, scene));
+                Wheel_01_flag = 1;
+                Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Wheel_03_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_03") == 0){
+                Wheel_03_meshes.push_back(processMesh(mesh, scene));
+                Wheel_03_flag = 1;
+                Wheel_01_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Door_L1_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_L1") == 0){
+                Door_L1_meshes.push_back(processMesh(mesh, scene));
+                Door_L1_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Door_L2_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_L2") == 0){
+                Door_L2_meshes.push_back(processMesh(mesh, scene));
+                Door_L2_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Door_R1_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_R1") == 0){
+                Door_R1_meshes.push_back(processMesh(mesh, scene));
+                Door_R1_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Door_R2_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_R2") == 0){
+                Door_R2_meshes.push_back(processMesh(mesh, scene));
+                Door_R2_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_B_flag = 0;
+            }else if((Door_B_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_B") == 0){
+                Door_B_meshes.push_back(processMesh(mesh, scene));
+                Door_B_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = 0;
+            }else{
+                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                meshes.push_back(processMesh(mesh, scene));
+            }
         }
         // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
         for(unsigned int i = 0; i < node->mNumChildren; i++)
@@ -90,7 +213,6 @@ private:
             processNode(node->mChildren[i], scene);
             //cout << "node num = " << ++num << endl;
         }
-
     }
 
     Mesh processMesh(aiMesh *mesh, const aiScene *scene)
