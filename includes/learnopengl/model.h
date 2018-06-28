@@ -36,6 +36,9 @@ public:
     vector<Mesh> Wheel_01_meshes;
     vector<Mesh> Wheel_03_meshes;
 
+    vector<Mesh> Wheel_02_meshes;
+    vector<Mesh> Wheel_04_meshes;
+
     vector<Mesh> Door_L1_meshes;
     vector<Mesh> Door_L2_meshes;
     vector<Mesh> Door_R1_meshes;
@@ -66,6 +69,22 @@ public:
     // draws the model, and thus all its meshes
     void Draw_Car(Shader shader, float angle)
     {
+        static float goOrBackAngle = 0.0f;
+
+        float _angle;
+
+        //cout << "angle = " << angle << endl;
+
+        if(angle >= -46.0f && angle <= 46.0f){
+            goOrBackAngle -= 1.0f;
+            _angle = -angle;
+        }else if (angle >= 134.0f && angle <= 226.0f){
+            goOrBackAngle += 1.0f;
+            _angle = -(angle-180.0f);
+        }else{
+            assert(0);
+        }
+
         // cout << "meshes.size():: " << meshes.size() << endl;
         // cout << "Wheel_01_meshes.size():: " << Wheel_01_meshes.size() << endl;
         // cout << "Wheel_03_meshes.size():: " << Wheel_03_meshes.size() << endl;
@@ -113,23 +132,44 @@ public:
 
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
-        model = glm::translate(model, glm::vec3(131.0f, 0.0f, -89.0f));
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::translate(model, glm::vec3(-131.0f, 0.0f, 89.0f));
+        model = glm::translate(model, glm::vec3(131.0f, 38.0f, -89.0f));
+        model = glm::rotate(model, glm::radians(_angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(goOrBackAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(-131.0f, -38.0f, 89.0f));
         shader.setMat4("model", model);
-
         for(unsigned int i = 0; i < Wheel_01_meshes.size(); i++){
             Wheel_01_meshes[i].Draw(shader);
         }
 
         model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
-        model = glm::translate(model, glm::vec3(131.0f, 0.0f, 89.0f));
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::translate(model, glm::vec3(-131.0f, 0.0f, -89.0f));
+        model = glm::translate(model, glm::vec3(131.0f, 38.0f, 89.0f));
+        model = glm::rotate(model, glm::radians(_angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(goOrBackAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(-131.0f, -38.0f, -89.0f));
         shader.setMat4("model", model);
         for(unsigned int i = 0; i < Wheel_03_meshes.size(); i++){
             Wheel_03_meshes[i].Draw(shader);
+        }
+
+        model = glm::mat4(1.0);
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        model = glm::translate(model, glm::vec3(-134.0f, 38.0f, -89.0f));
+        model = glm::rotate(model, glm::radians(goOrBackAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(134.0f, -38.0f, 89.0f));
+        shader.setMat4("model", model);
+        for(unsigned int i = 0; i < Wheel_01_meshes.size(); i++){
+            Wheel_02_meshes[i].Draw(shader);
+        }
+
+        model = glm::mat4(1.0);
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        model = glm::translate(model, glm::vec3(-134.0f, 38.0f, -89.0f));
+        model = glm::rotate(model, glm::radians(goOrBackAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(134.0f, -38.0f, 89.0f));
+        shader.setMat4("model", model);
+        for(unsigned int i = 0; i < Wheel_01_meshes.size(); i++){
+            Wheel_04_meshes[i].Draw(shader);
         }
     }
 
@@ -161,6 +201,8 @@ private:
 
         static int  Wheel_01_flag = 0;
         static int  Wheel_03_flag = 0;
+        static int  Wheel_02_flag = 0;
+        static int  Wheel_04_flag = 0;
         static int  Door_L1_flag = 0;
         static int  Door_L2_flag = 0;
         static int  Door_R1_flag = 0;
@@ -177,33 +219,41 @@ private:
             if((Wheel_01_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_01") == 0){
                 Wheel_01_meshes.push_back(processMesh(mesh, scene));
                 Wheel_01_flag = 1;
-                Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
             }else if((Wheel_03_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_03") == 0){
                 Wheel_03_meshes.push_back(processMesh(mesh, scene));
                 Wheel_03_flag = 1;
-                Wheel_01_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Wheel_02_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_02") == 0){
+                Wheel_02_meshes.push_back(processMesh(mesh, scene));
+                Wheel_02_flag = 1;
+                Wheel_01_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+            }else if((Wheel_04_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Wheel_04") == 0){
+                Wheel_04_meshes.push_back(processMesh(mesh, scene));
+                Wheel_04_flag = 1;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
             }else if((Door_L1_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_L1") == 0){
                 Door_L1_meshes.push_back(processMesh(mesh, scene));
                 Door_L1_flag = 1;
-                Wheel_01_flag = Wheel_03_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
             }else if((Door_L2_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_L2") == 0){
                 Door_L2_meshes.push_back(processMesh(mesh, scene));
                 Door_L2_flag = 1;
-                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
             }else if((Door_R1_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_R1") == 0){
                 Door_R1_meshes.push_back(processMesh(mesh, scene));
                 Door_R1_flag = 1;
-                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R2_flag = Door_B_flag = 0;
             }else if((Door_R2_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_R2") == 0){
                 Door_R2_meshes.push_back(processMesh(mesh, scene));
                 Door_R2_flag = 1;
-                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_B_flag = 0;
             }else if((Door_B_flag == 1 && strcmp(node->mName.C_Str(), "defaultobject") == 0) || strcmp(node->mName.C_Str(), "Door_B") == 0){
                 Door_B_meshes.push_back(processMesh(mesh, scene));
                 Door_B_flag = 1;
-                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = 0;
             }else{
-                Wheel_01_flag = Wheel_03_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
+                Wheel_01_flag = Wheel_02_flag = Wheel_03_flag = Wheel_04_flag = Door_L1_flag = Door_L2_flag = Door_R1_flag = Door_R2_flag = Door_B_flag = 0;
                 meshes.push_back(processMesh(mesh, scene));
             }
         }

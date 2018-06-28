@@ -40,9 +40,8 @@ const unsigned int SCREEN_HEIGHT = 720;
 const unsigned int TOP_VIEW_WIDTH = 640;
 const unsigned int TOP_VIEW_HEIGHT = 720;
 
-// settings
-const unsigned int SCR_WIDTH = 1280;
-const unsigned int SCR_HEIGHT = 720;
+const unsigned int FREE_VIEW_WIDTH = 1280;
+const unsigned int FREE_VIEW_HEIGHT = 720;
 
 unsigned int currentCursorX;
 unsigned int currentCursorY;
@@ -1357,10 +1356,10 @@ int main()
         const glm::vec3 at_top = glm::vec3(0.0f, 0.0f, 0.0f);
 
 
-        glViewport(0, 0, (GLsizei)640, (GLsizei)720);
+        glViewport(0, 0, (GLsizei)TOP_VIEW_WIDTH, (GLsizei)TOP_VIEW_HEIGHT);
 
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)640 / (float)720, 0.1f, 1000.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)TOP_VIEW_WIDTH / (float)TOP_VIEW_HEIGHT, 0.1f, 1000.0f);
 
         float camX = cos(glm::radians(Yaw_top)) * cos(glm::radians(Pitch_top)) * radius_top;
         float camY = sin(glm::radians(Pitch_top)) * radius_top;
@@ -1393,11 +1392,7 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        if(wheelAngle >= 134.0f && wheelAngle <= 226.0f){
-            ourModel.Draw_Car(carShader, -(wheelAngle-180.0f));
-        }else{
-            ourModel.Draw_Car(carShader, -wheelAngle);
-        }
+        ourModel.Draw_Car(carShader, wheelAngle);
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
@@ -1948,10 +1943,10 @@ int main()
 
         //------------------------------------------right view--------------------------------------------------------------
 
-        glViewport(640, 0, (GLsizei)1280, (GLsizei)720);
+        glViewport(TOP_VIEW_WIDTH, 0, (GLsizei)FREE_VIEW_WIDTH, (GLsizei)FREE_VIEW_HEIGHT);
 
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 1000.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)FREE_VIEW_WIDTH / (float)FREE_VIEW_HEIGHT, 0.1f, 1000.0f);
 
         float camX = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch)) * radius;
         float camY = sin(glm::radians(Pitch)) * radius;
@@ -1984,11 +1979,7 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        if(wheelAngle >= 134.0f && wheelAngle <= 226.0f){
-            ourModel.Draw_Car(carShader, -(wheelAngle-180.0f));
-        }else{
-            ourModel.Draw_Car(carShader, -wheelAngle);
-        }
+        ourModel.Draw_Car(carShader, wheelAngle);
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
