@@ -75,7 +75,7 @@ float radius = 700.0f;//30.0f;
 float Yaw = 90.0f;
 float Pitch = 45.0f;
 
-float _distance = 250.0f;
+float _distance = 9.0f;
 float r = 1.0f;
 float g = 0.0f;
 
@@ -648,15 +648,15 @@ void TestPasFun()
         //std::this_thread::sleep_for(std::chrono::seconds(3));
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-        // _distance += 20.0f;
-        // r -= 0.1f;
-        // g += 0.1f;
+        _distance += 0.2f;
+        r -= 0.02f;
+        g += 0.02f;
 
-        // if (_distance > 450.0f) {
-        //     _distance = 250.0f;
-        //     r = 1.0f;
-        //     g = 0.0f;
-        // }
+        if (_distance > 19.0f) {
+            _distance = 9.0f;
+            r = 1.0f;
+            g = 0.0f;
+        }
     }
 }
 
@@ -1249,95 +1249,95 @@ int main()
         // 0.5f,  0.0f,  0.5f, 0.8f,  // G
 
         //---------------------------line------------------
-        -2.0f, 10.0f, 5.0f, 0.7f,
-        -2.0f, 95.0f, 5.0f, 0.7f,
-        2.0f, 95.0f, 5.0f, 0.7f,
-        2.0f, 10.0f, 5.0f, 0.7f,
+        -0.025f, 0.2f, 1.0f, 0.7f,
+        -0.025f, 1.0f, 1.0f, 0.7f,
+        0.025f, 1.0f, 1.0f, 0.7f,
+        0.025f, 0.2f, 1.0f, 0.7f,
 
-        2.0f, 95.0f, 5.0f, 0.7f,
-        2.0f, 95.0f, -5.0f, 0.7f,
-        2.0f, 10.0f, -5.0f, 0.7f,
+        0.025f, 1.0f, 1.0f, 0.7f,
+        0.025f, 1.0f, -1.0f, 0.7f,
+        0.025f, 0.2f, -1.0f, 0.7f,
 
-        2.0f, 95.0f, -5.0f, 0.7f,
-        -2.0f, 95.0f, -5.0f, 0.7f,
-        -2.0f, 10.0f, -5.0f, 0.7f,
+        0.025f, 1.0f, -1.0f, 0.7f,
+        -0.025f, 1.0f, -1.0f, 0.7f,
+        -0.025f, 0.2f, -1.0f, 0.7f,
 
-        -2.0f, 95.0f, -5.0f, 0.7f,
-        -2.0f, 95.0f, 5.0f, 0.7f,
+        -0.025f, 1.0f, -1.0f, 0.7f,
+        -0.025f, 1.0f, 1.0f, 0.7f,
 
         //---------------------------down---------------------
         //front
-        -2.0f, 10.0f, 5.0f, 1.0f,
-         2.0f, 10.0f, 5.0f, 1.0f,
-        -2.0f, 0.0f, 5.0f, 1.0f,
-        -2.0f, 0.0f, 5.0f, 1.0f,
-         2.0f, 0.0f, 5.0f, 1.0f,
-         2.0f, 10.0f, 5.0f, 1.0f,
+        -0.025f, 0.2f, 1.0f, 1.0f,
+         0.025f, 0.2f, 1.0f, 1.0f,
+        -0.025f, 0.0f, 1.0f, 1.0f,
+        -0.025f, 0.0f, 1.0f, 1.0f,
+         0.025f, 0.0f, 1.0f, 1.0f,
+         0.025f, 0.2f, 1.0f, 1.0f,
 
         //back
-        -2.0f, 10.0f, -5.0f, 1.0f,
-         2.0f, 10.0f, -5.0f, 1.0f,
-        -2.0f, 0.0f, -5.0f, 1.0f,
-        -2.0f, 0.0f, -5.0f, 1.0f,
-         2.0f, 0.0f, -5.0f, 1.0f,
-         2.0f, 10.0f, -5.0f, 1.0f,
+        -0.025f, 0.2f, -1.0f, 1.0f,
+         0.025f, 0.2f, -1.0f, 1.0f,
+        -0.025f, 0.0f, -1.0f, 1.0f,
+        -0.025f, 0.0f, -1.0f, 1.0f,
+         0.025f, 0.0f, -1.0f, 1.0f,
+         0.025f, 0.2f, -1.0f, 1.0f,
 
         //left
-        -2.0f, 10.0f, 5.0f, 1.0f,
-        -2.0f, 10.0f, -5.0f, 1.0f,
-        -2.0f, 0.0f, -5.0f, 1.0f,
-        -2.0f, 0.0f, -5.0f, 1.0f,
-        -2.0f, 0.0f, 5.0f, 1.0f,
-        -2.0f, 10.0f, 5.0f, 1.0f,
+        -0.025f, 0.2f, 1.0f, 1.0f,
+        -0.025f, 0.2f, -1.0f, 1.0f,
+        -0.025f, 0.0f, -1.0f, 1.0f,
+        -0.025f, 0.0f, -1.0f, 1.0f,
+        -0.025f, 0.0f, 1.0f, 1.0f,
+        -0.025f, 0.2f, 1.0f, 1.0f,
 
         //right
-        2.0f, 10.0f, 5.0f, 1.0f,
-        2.0f, 10.0f, -5.0f, 1.0f,
-        2.0f, 0.0f, -5.0f, 1.0f,
-        2.0f, 0.0f, -5.0f, 1.0f,
-        2.0f, 0.0f, 5.0f, 1.0f,
-        2.0f, 10.0f, 5.0f, 1.0f,
+        0.025f, 0.2f, 1.0f, 1.0f,
+        0.025f, 0.2f, -1.0f, 1.0f,
+        0.025f, 0.0f, -1.0f, 1.0f,
+        0.025f, 0.0f, -1.0f, 1.0f,
+        0.025f, 0.0f, 1.0f, 1.0f,
+        0.025f, 0.2f, 1.0f, 1.0f,
 
         //---------------------------up---------------------
         //up
-        -2.0f, 95.0f, 5.0f, 0.3f,
-        -2.0f, 95.0f, -5.0f, 0.3f,
-        2.0f,  95.0f, 5.0f, 0.3f,
-        2.0f,  95.0f, 5.0f, 0.3f,
-        -2.0f, 95.0f, -5.0f, 0.3f,
-        2.0f,  95.0f, -5.0f, 0.3f,
+        -0.025f, 1.0f, 1.0f, 0.3f,
+        -0.025f, 1.0f, -1.0f, 0.3f,
+        0.025f,  1.0f, 1.0f, 0.3f,
+        0.025f,  1.0f, 1.0f, 0.3f,
+        -0.025f, 1.0f, -1.0f, 0.3f,
+        0.025f,  1.0f, -1.0f, 0.3f,
 
         //front
-        -2.0f, 95.0f, 5.0f, 0.3f,
-         2.0f, 95.0f, 5.0f, 0.3f,
-        -2.0f, 10.0f, 5.0f, 0.3f,
-        -2.0f, 10.0f, 5.0f, 0.3f,
-         2.0f, 10.0f, 5.0f, 0.3f,
-         2.0f, 95.0f, 5.0f, 0.3f,
+        -0.025f, 1.0f, 1.0f, 0.3f,
+         0.025f, 1.0f, 1.0f, 0.3f,
+        -0.025f, 0.2f, 1.0f, 0.3f,
+        -0.025f, 0.2f, 1.0f, 0.3f,
+         0.025f, 0.2f, 1.0f, 0.3f,
+         0.025f, 1.0f, 1.0f, 0.3f,
 
         //back
-        -2.0f, 95.0f, -5.0f, 0.3f,
-         2.0f, 95.0f, -5.0f, 0.3f,
-        -2.0f, 10.0f, -5.0f, 0.3f,
-        -2.0f, 10.0f, -5.0f, 0.3f,
-         2.0f, 10.0f, -5.0f, 0.3f,
-         2.0f, 95.0f, -5.0f, 0.3f,
+        -0.025f, 1.0f, -1.0f, 0.3f,
+         0.025f, 1.0f, -1.0f, 0.3f,
+        -0.025f, 0.2f, -1.0f, 0.3f,
+        -0.025f, 0.2f, -1.0f, 0.3f,
+         0.025f, 0.2f, -1.0f, 0.3f,
+         0.025f, 1.0f, -1.0f, 0.3f,
 
         //left
-        -2.0f, 95.0f, 5.0f, 0.3f,
-        -2.0f, 95.0f, -5.0f, 0.3f,
-        -2.0f, 10.0f, -5.0f, 0.3f,
-        -2.0f, 10.0f, -5.0f, 0.3f,
-        -2.0f, 10.0f, 5.0f, 0.3f,
-        -2.0f, 95.0f, 5.0f, 0.3f,
+        -0.025f, 1.0f, 1.0f, 0.3f,
+        -0.025f, 1.0f, -1.0f, 0.3f,
+        -0.025f, 0.2f, -1.0f, 0.3f,
+        -0.025f, 0.2f, -1.0f, 0.3f,
+        -0.025f, 0.2f, 1.0f, 0.3f,
+        -0.025f, 1.0f, 1.0f, 0.3f,
 
         //right
-        2.0f, 95.0f, 5.0f, 0.3f,
-        2.0f, 95.0f, -5.0f, 0.3f,
-        2.0f, 10.0f, -5.0f, 0.3f,
-        2.0f, 10.0f, -5.0f, 0.3f,
-        2.0f, 10.0f, 5.0f, 0.3f,
-        2.0f, 95.0f, 5.0f, 0.3f,
+        0.025f, 1.0f, 1.0f, 0.3f,
+        0.025f, 1.0f, -1.0f, 0.3f,
+        0.025f, 0.2f, -1.0f, 0.3f,
+        0.025f, 0.2f, -1.0f, 0.3f,
+        0.025f, 0.2f, 1.0f, 0.3f,
+        0.025f, 1.0f, 1.0f, 0.3f,
     };
     // ---------------------------color block vertex data------------------------------end
 
@@ -1438,16 +1438,6 @@ int main()
 
         float wheelAngle = wheelAngleArray.front();
         wheelAngleArray.pop_front();
-
-        _distance += 20.0f;
-        r -= 0.1f;
-        g += 0.1f;
-
-        if (_distance > 450.0f) {
-            _distance = 250.0f;
-            r = 1.0f;
-            g = 0.0f;
-        }
 
     {
         // //------------------------------------------top view--------------------------------------------------------------
@@ -1559,127 +1549,329 @@ int main()
         //--------------------------------- front -----------------------
         glm::mat4 model2;
         model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -20.0f));
+        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 0.0f));
+        //model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.0f, 5.0f, 5.0f));
         radarShader.setMat4("model", model2);
         glBindVertexArray(radarRectangularLineVAO);
         glDrawArrays(GL_LINE_STRIP, 0, 12);
         glBindVertexArray(radarRectangularAreaVAO);
         glDrawArrays(GL_TRIANGLES, 0, 54);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, -1.7f));
+        // model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -0.5f));
+        // model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 0.5f));
+        // model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- back -----------------------
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, 1.7f));
+        // model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.5f, 0.0f, 3.0f));
+        // model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(-15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // //--------------------------------- back -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, -5.0f));
+        // model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, -2.7f));
+        // model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- left -----------------------
-        for(int i = 140; i >= -160; )
-        {
-            model2 = glm::mat4(1.0);
-            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, -(_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
-            radarShader.setMat4("model", model2);
-            glBindVertexArray(radarRectangularLineVAO);
-            glDrawArrays(GL_LINE_STRIP, 0, 12);
-            glBindVertexArray(radarRectangularAreaVAO);
-            glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, -1.0f));
+        // model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-            i -= 60;
-        }
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, 1.0f));
+        // model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- right -----------------------
-        for(int i = 140; i >= -160; )
-        {
-            model2 = glm::mat4(1.0);
-            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, (_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
-            radarShader.setMat4("model", model2);
-            glBindVertexArray(radarRectangularLineVAO);
-            glDrawArrays(GL_LINE_STRIP, 0, 12);
-            glBindVertexArray(radarRectangularAreaVAO);
-            glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, 2.7f));
+        // model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-            i -= 60;
-        }
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, 5.0f));
+        // model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // //--------------------------------- left -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+
+
+        // //--------------------------------- right -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
         shaderCamera.use();
 
@@ -1944,127 +2136,329 @@ int main()
         //--------------------------------- front -----------------------
         glm::mat4 model2;
         model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -20.0f));
+        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 0.0f));
+        //model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model2 = glm::scale(model2, glm::vec3(5.0f, 5.0f, 5.0f));
         radarShader.setMat4("model", model2);
         glBindVertexArray(radarRectangularLineVAO);
         glDrawArrays(GL_LINE_STRIP, 0, 12);
         glBindVertexArray(radarRectangularAreaVAO);
         glDrawArrays(GL_TRIANGLES, 0, 54);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, -1.7f));
+        // model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -0.5f));
+        // model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 0.5f));
+        // model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- back -----------------------
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.2f, 0.0f, 1.7f));
+        // model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(_distance-0.5f, 0.0f, 3.0f));
+        // model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(-15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // //--------------------------------- back -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, -5.0f));
+        // model2 = glm::rotate(model2, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, -2.7f));
+        // model2 = glm::rotate(model2, glm::radians(-9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- left -----------------------
-        for(int i = 140; i >= -160; )
-        {
-            model2 = glm::mat4(1.0);
-            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, -(_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
-            radarShader.setMat4("model", model2);
-            glBindVertexArray(radarRectangularLineVAO);
-            glDrawArrays(GL_LINE_STRIP, 0, 12);
-            glBindVertexArray(radarRectangularAreaVAO);
-            glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, -1.0f));
+        // model2 = glm::rotate(model2, glm::radians(-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-            i -= 60;
-        }
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.4, 0.0f, 1.0f));
+        // model2 = glm::rotate(model2, glm::radians(5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-        //--------------------------------- right -----------------------
-        for(int i = 140; i >= -160; )
-        {
-            model2 = glm::mat4(1.0);
-            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, (_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
-            radarShader.setMat4("model", model2);
-            glBindVertexArray(radarRectangularLineVAO);
-            glDrawArrays(GL_LINE_STRIP, 0, 12);
-            glBindVertexArray(radarRectangularAreaVAO);
-            glDrawArrays(GL_TRIANGLES, 0, 54);
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 5.2, 0.0f, 2.7f));
+        // model2 = glm::rotate(model2, glm::radians(9.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
-            i -= 60;
-        }
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3((-1) * _distance - 4.5, 0.0f, 5.0f));
+        // model2 = glm::rotate(model2, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 2.0f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // //--------------------------------- left -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, (-1) * _distance + 7));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+
+
+        // //--------------------------------- right -----------------------
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(9.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(7.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(5.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(3.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(1.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-1.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-3.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-5.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-7.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
+
+        // model2 = glm::mat4(1.0);
+        // model2 = glm::translate(model2, glm::vec3(-9.0f, 0.0f, _distance - 1));
+        // model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model2 = glm::scale(model2, glm::vec3(5.5f, 4.0f, 1.5f));
+        // radarShader.setMat4("model", model2);
+        // glBindVertexArray(radarRectangularLineVAO);
+        // glDrawArrays(GL_LINE_STRIP, 0, 4);
+        // glBindVertexArray(radarRectangularAreaVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 12);
 
         //--------------------on screen-------------------
         glfwSwapBuffers(window);
