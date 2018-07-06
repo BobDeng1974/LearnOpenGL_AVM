@@ -129,6 +129,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/DependInfo.cmake"
   "CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/DependInfo.cmake"
   "CMakeFiles/7.in_practice__1.debugging.dir/DependInfo.cmake"
+  "CMakeFiles/7.in_practice__2.text_rendering.dir/DependInfo.cmake"
   "CMakeFiles/GLAD.dir/DependInfo.cmake"
   "CMakeFiles/STB_IMAGE.dir/DependInfo.cmake"
   )

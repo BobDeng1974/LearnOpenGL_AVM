@@ -76,5 +76,6 @@
 /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/6.pbr__2.2.1.ibl_specular.dir
 /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir
 /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/7.in_practice__1.debugging.dir
+/home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/7.in_practice__2.text_rendering.dir
 /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/GLAD.dir
 /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles/STB_IMAGE.dir

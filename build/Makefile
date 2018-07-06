@@ -1116,6 +1116,19 @@ depend:
 .PHONY : 7.in_practice__1.debugging/fast
 
 #=============================================================================
+# Target rules for targets named 7.in_practice__2.text_rendering
+
+# Build rule for target.
+7.in_practice__2.text_rendering: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 7.in_practice__2.text_rendering
+.PHONY : 7.in_practice__2.text_rendering
+
+# fast build rule for target.
+7.in_practice__2.text_rendering/fast:
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/build
+.PHONY : 7.in_practice__2.text_rendering/fast
+
+#=============================================================================
 # Target rules for targets named GLAD
 
 # Build rule for target.
@@ -3013,6 +3026,30 @@ src/7.in_practice/1.debugging/debugging.cpp.s:
 	$(MAKE) -f CMakeFiles/7.in_practice__1.debugging.dir/build.make CMakeFiles/7.in_practice__1.debugging.dir/src/7.in_practice/1.debugging/debugging.cpp.s
 .PHONY : src/7.in_practice/1.debugging/debugging.cpp.s
 
+src/7.in_practice/2.text_rendering/textRendering.o: src/7.in_practice/2.text_rendering/textRendering.cpp.o
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.o
+
+# target to build an object file
+src/7.in_practice/2.text_rendering/textRendering.cpp.o:
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/src/7.in_practice/2.text_rendering/textRendering.cpp.o
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.cpp.o
+
+src/7.in_practice/2.text_rendering/textRendering.i: src/7.in_practice/2.text_rendering/textRendering.cpp.i
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.i
+
+# target to preprocess a source file
+src/7.in_practice/2.text_rendering/textRendering.cpp.i:
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/src/7.in_practice/2.text_rendering/textRendering.cpp.i
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.cpp.i
+
+src/7.in_practice/2.text_rendering/textRendering.s: src/7.in_practice/2.text_rendering/textRendering.cpp.s
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.s
+
+# target to generate assembly for a file
+src/7.in_practice/2.text_rendering/textRendering.cpp.s:
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/src/7.in_practice/2.text_rendering/textRendering.cpp.s
+.PHONY : src/7.in_practice/2.text_rendering/textRendering.cpp.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -3145,6 +3182,7 @@ help:
 	@echo "... 6.pbr__2.2.1.ibl_specular"
 	@echo "... 6.pbr__2.2.2.ibl_specular_textured"
 	@echo "... 7.in_practice__1.debugging"
+	@echo "... 7.in_practice__2.text_rendering"
 	@echo "... GLAD"
 	@echo "... STB_IMAGE"
 	@echo "... edit_cache"
@@ -3383,6 +3421,9 @@ help:
 	@echo "... src/7.in_practice/1.debugging/debugging.o"
 	@echo "... src/7.in_practice/1.debugging/debugging.i"
 	@echo "... src/7.in_practice/1.debugging/debugging.s"
+	@echo "... src/7.in_practice/2.text_rendering/textRendering.o"
+	@echo "... src/7.in_practice/2.text_rendering/textRendering.i"
+	@echo "... src/7.in_practice/2.text_rendering/textRendering.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"

@@ -2864,13 +2864,49 @@ clean: CMakeFiles/7.in_practice__1.debugging.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/7.in_practice__2.text_rendering.dir
+
+# All Build rule for target.
+CMakeFiles/7.in_practice__2.text_rendering.dir/all: CMakeFiles/STB_IMAGE.dir/all
+CMakeFiles/7.in_practice__2.text_rendering.dir/all: CMakeFiles/GLAD.dir/all
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/depend
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  79
+	@echo "Built target 7.in_practice__2.text_rendering"
+.PHONY : CMakeFiles/7.in_practice__2.text_rendering.dir/all
+
+# Include target in all.
+all: CMakeFiles/7.in_practice__2.text_rendering.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/7.in_practice__2.text_rendering.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/7.in_practice__2.text_rendering.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles 0
+.PHONY : CMakeFiles/7.in_practice__2.text_rendering.dir/rule
+
+# Convenience name for target.
+7.in_practice__2.text_rendering: CMakeFiles/7.in_practice__2.text_rendering.dir/rule
+.PHONY : 7.in_practice__2.text_rendering
+
+# clean rule for target.
+CMakeFiles/7.in_practice__2.text_rendering.dir/clean:
+	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/clean
+.PHONY : CMakeFiles/7.in_practice__2.text_rendering.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/7.in_practice__2.text_rendering.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/GLAD.dir
 
 # All Build rule for target.
 CMakeFiles/GLAD.dir/all:
 	$(MAKE) -f CMakeFiles/GLAD.dir/build.make CMakeFiles/GLAD.dir/depend
 	$(MAKE) -f CMakeFiles/GLAD.dir/build.make CMakeFiles/GLAD.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  79
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  80
 	@echo "Built target GLAD"
 .PHONY : CMakeFiles/GLAD.dir/all
 
@@ -2905,7 +2941,7 @@ clean: CMakeFiles/GLAD.dir/clean
 CMakeFiles/STB_IMAGE.dir/all:
 	$(MAKE) -f CMakeFiles/STB_IMAGE.dir/build.make CMakeFiles/STB_IMAGE.dir/depend
 	$(MAKE) -f CMakeFiles/STB_IMAGE.dir/build.make CMakeFiles/STB_IMAGE.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  80
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  81
 	@echo "Built target STB_IMAGE"
 .PHONY : CMakeFiles/STB_IMAGE.dir/all
 
