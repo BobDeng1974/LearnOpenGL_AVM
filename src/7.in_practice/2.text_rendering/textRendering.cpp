@@ -155,9 +155,6 @@ int main()
 
         RenderText(shader, "Please pay attention to the surrounding environment", 75.0f, 75.0f, 0.4f, glm::vec3(1.0, 0.0f, 0.0f));
 
-
-
-
         // Swap the buffers
         glfwSwapBuffers(window);
     }

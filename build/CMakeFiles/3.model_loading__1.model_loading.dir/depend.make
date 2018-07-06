@@ -31,6 +31,8 @@ CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_load
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/assimp/vector2.inl
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/assimp/vector3.h
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/assimp/vector3.inl
+CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/freetype/config/ftheader.h
+CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/ft2build.h
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/glad/glad.h
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/glm/common.hpp
 CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_loading/model_loading.cpp.o: ../includes/glm/detail/_fixes.hpp

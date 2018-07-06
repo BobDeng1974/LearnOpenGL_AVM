@@ -59,8 +59,8 @@ CMAKE_BINARY_DIR = /home/snow2t/Workspace/LearnOpenGL_AVM/build
 # Target rules for target CMakeFiles/1.getting_started__1.1.hello_window.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__1.1.hello_window.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__1.1.hello_window.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__1.1.hello_window.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__1.1.hello_window.dir/build.make CMakeFiles/1.getting_started__1.1.hello_window.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__1.1.hello_window.dir/build.make CMakeFiles/1.getting_started__1.1.hello_window.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  1
@@ -95,8 +95,8 @@ clean: CMakeFiles/1.getting_started__1.1.hello_window.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__1.2.hello_window_clear.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/build.make CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/build.make CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  2
@@ -131,8 +131,8 @@ clean: CMakeFiles/1.getting_started__1.2.hello_window_clear.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__2.1.hello_triangle.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__2.1.hello_triangle.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__2.1.hello_triangle.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__2.1.hello_triangle.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__2.1.hello_triangle.dir/build.make CMakeFiles/1.getting_started__2.1.hello_triangle.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__2.1.hello_triangle.dir/build.make CMakeFiles/1.getting_started__2.1.hello_triangle.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  3
@@ -167,8 +167,8 @@ clean: CMakeFiles/1.getting_started__2.1.hello_triangle.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/build.make CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/build.make CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  4
@@ -203,8 +203,8 @@ clean: CMakeFiles/1.getting_started__2.2.hello_triangle_indexed.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/build.make CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/build.make CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  5
@@ -239,8 +239,8 @@ clean: CMakeFiles/1.getting_started__2.3.hello_triangle_exercise1.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/build.make CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/build.make CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  6
@@ -275,8 +275,8 @@ clean: CMakeFiles/1.getting_started__2.4.hello_triangle_exercise2.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/build.make CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/build.make CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  7
@@ -311,8 +311,8 @@ clean: CMakeFiles/1.getting_started__2.5.hello_triangle_exercise3.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__3.1.shaders_uniform.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/build.make CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/build.make CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  8
@@ -347,8 +347,8 @@ clean: CMakeFiles/1.getting_started__3.1.shaders_uniform.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/build.make CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/build.make CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  9
@@ -383,8 +383,8 @@ clean: CMakeFiles/1.getting_started__3.2.shaders_interpolation.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__3.3.shaders_class.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__3.3.shaders_class.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__3.3.shaders_class.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__3.3.shaders_class.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__3.3.shaders_class.dir/build.make CMakeFiles/1.getting_started__3.3.shaders_class.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__3.3.shaders_class.dir/build.make CMakeFiles/1.getting_started__3.3.shaders_class.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  10
@@ -419,8 +419,8 @@ clean: CMakeFiles/1.getting_started__3.3.shaders_class.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__4.1.textures.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__4.1.textures.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__4.1.textures.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__4.1.textures.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__4.1.textures.dir/build.make CMakeFiles/1.getting_started__4.1.textures.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__4.1.textures.dir/build.make CMakeFiles/1.getting_started__4.1.textures.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  11
@@ -455,8 +455,8 @@ clean: CMakeFiles/1.getting_started__4.1.textures.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__4.2.textures_combined.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__4.2.textures_combined.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__4.2.textures_combined.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__4.2.textures_combined.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__4.2.textures_combined.dir/build.make CMakeFiles/1.getting_started__4.2.textures_combined.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__4.2.textures_combined.dir/build.make CMakeFiles/1.getting_started__4.2.textures_combined.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  12
@@ -491,8 +491,8 @@ clean: CMakeFiles/1.getting_started__4.2.textures_combined.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__4.3.textures_exercise2.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/build.make CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/build.make CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  13
@@ -527,8 +527,8 @@ clean: CMakeFiles/1.getting_started__4.3.textures_exercise2.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__4.4.textures_exercise3.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/build.make CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/build.make CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  14
@@ -563,8 +563,8 @@ clean: CMakeFiles/1.getting_started__4.4.textures_exercise3.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__4.5.textures_exercise4.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/build.make CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/build.make CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  15
@@ -599,8 +599,8 @@ clean: CMakeFiles/1.getting_started__4.5.textures_exercise4.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__5.1.transformations.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__5.1.transformations.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__5.1.transformations.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__5.1.transformations.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__5.1.transformations.dir/build.make CMakeFiles/1.getting_started__5.1.transformations.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__5.1.transformations.dir/build.make CMakeFiles/1.getting_started__5.1.transformations.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  16
@@ -635,8 +635,8 @@ clean: CMakeFiles/1.getting_started__5.1.transformations.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/build.make CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/build.make CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  17
@@ -671,8 +671,8 @@ clean: CMakeFiles/1.getting_started__5.2.transformations_exercise2.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__6.1.coordinate_systems.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/build.make CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/build.make CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  18
@@ -707,8 +707,8 @@ clean: CMakeFiles/1.getting_started__6.1.coordinate_systems.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/build.make CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/build.make CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  19
@@ -743,8 +743,8 @@ clean: CMakeFiles/1.getting_started__6.2.coordinate_systems_depth.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/build.make CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/build.make CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  20
@@ -779,8 +779,8 @@ clean: CMakeFiles/1.getting_started__6.3.coordinate_systems_multiple.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__7.1.camera_circle.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__7.1.camera_circle.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__7.1.camera_circle.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__7.1.camera_circle.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__7.1.camera_circle.dir/build.make CMakeFiles/1.getting_started__7.1.camera_circle.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__7.1.camera_circle.dir/build.make CMakeFiles/1.getting_started__7.1.camera_circle.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  21
@@ -815,8 +815,8 @@ clean: CMakeFiles/1.getting_started__7.1.camera_circle.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/build.make CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/build.make CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  22
@@ -851,8 +851,8 @@ clean: CMakeFiles/1.getting_started__7.2.camera_keyboard_dt.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/build.make CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/build.make CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  23
@@ -887,8 +887,8 @@ clean: CMakeFiles/1.getting_started__7.3.camera_mouse_zoom.dir/clean
 # Target rules for target CMakeFiles/1.getting_started__7.4.camera_class.dir
 
 # All Build rule for target.
-CMakeFiles/1.getting_started__7.4.camera_class.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/1.getting_started__7.4.camera_class.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/1.getting_started__7.4.camera_class.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/1.getting_started__7.4.camera_class.dir/build.make CMakeFiles/1.getting_started__7.4.camera_class.dir/depend
 	$(MAKE) -f CMakeFiles/1.getting_started__7.4.camera_class.dir/build.make CMakeFiles/1.getting_started__7.4.camera_class.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  24
@@ -923,8 +923,8 @@ clean: CMakeFiles/1.getting_started__7.4.camera_class.dir/clean
 # Target rules for target CMakeFiles/2.lighting__1.colors.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__1.colors.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__1.colors.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__1.colors.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__1.colors.dir/build.make CMakeFiles/2.lighting__1.colors.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__1.colors.dir/build.make CMakeFiles/2.lighting__1.colors.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  25
@@ -959,8 +959,8 @@ clean: CMakeFiles/2.lighting__1.colors.dir/clean
 # Target rules for target CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/build.make CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/build.make CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  26
@@ -995,8 +995,8 @@ clean: CMakeFiles/2.lighting__2.1.basic_lighting_diffuse.dir/clean
 # Target rules for target CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/build.make CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/build.make CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  27
@@ -1031,8 +1031,8 @@ clean: CMakeFiles/2.lighting__2.2.basic_lighting_specular.dir/clean
 # Target rules for target CMakeFiles/2.lighting__3.1.materials.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__3.1.materials.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__3.1.materials.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__3.1.materials.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__3.1.materials.dir/build.make CMakeFiles/2.lighting__3.1.materials.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__3.1.materials.dir/build.make CMakeFiles/2.lighting__3.1.materials.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  28
@@ -1067,8 +1067,8 @@ clean: CMakeFiles/2.lighting__3.1.materials.dir/clean
 # Target rules for target CMakeFiles/2.lighting__3.2.materials_exercise1.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__3.2.materials_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__3.2.materials_exercise1.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__3.2.materials_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__3.2.materials_exercise1.dir/build.make CMakeFiles/2.lighting__3.2.materials_exercise1.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__3.2.materials_exercise1.dir/build.make CMakeFiles/2.lighting__3.2.materials_exercise1.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  29
@@ -1103,8 +1103,8 @@ clean: CMakeFiles/2.lighting__3.2.materials_exercise1.dir/clean
 # Target rules for target CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/build.make CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/build.make CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  30
@@ -1139,8 +1139,8 @@ clean: CMakeFiles/2.lighting__4.1.lighting_maps_diffuse_map.dir/clean
 # Target rules for target CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/build.make CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/build.make CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  31
@@ -1175,8 +1175,8 @@ clean: CMakeFiles/2.lighting__4.2.lighting_maps_specular_map.dir/clean
 # Target rules for target CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/build.make CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/build.make CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  32
@@ -1211,8 +1211,8 @@ clean: CMakeFiles/2.lighting__4.3.lighting_maps_exercise4.dir/clean
 # Target rules for target CMakeFiles/2.lighting__5.1.light_casters_directional.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__5.1.light_casters_directional.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__5.1.light_casters_directional.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__5.1.light_casters_directional.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__5.1.light_casters_directional.dir/build.make CMakeFiles/2.lighting__5.1.light_casters_directional.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__5.1.light_casters_directional.dir/build.make CMakeFiles/2.lighting__5.1.light_casters_directional.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  33
@@ -1247,8 +1247,8 @@ clean: CMakeFiles/2.lighting__5.1.light_casters_directional.dir/clean
 # Target rules for target CMakeFiles/2.lighting__5.2.light_casters_point.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__5.2.light_casters_point.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__5.2.light_casters_point.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__5.2.light_casters_point.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__5.2.light_casters_point.dir/build.make CMakeFiles/2.lighting__5.2.light_casters_point.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__5.2.light_casters_point.dir/build.make CMakeFiles/2.lighting__5.2.light_casters_point.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  34
@@ -1283,8 +1283,8 @@ clean: CMakeFiles/2.lighting__5.2.light_casters_point.dir/clean
 # Target rules for target CMakeFiles/2.lighting__5.3.light_casters_spot.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__5.3.light_casters_spot.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__5.3.light_casters_spot.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__5.3.light_casters_spot.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__5.3.light_casters_spot.dir/build.make CMakeFiles/2.lighting__5.3.light_casters_spot.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__5.3.light_casters_spot.dir/build.make CMakeFiles/2.lighting__5.3.light_casters_spot.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  35
@@ -1319,8 +1319,8 @@ clean: CMakeFiles/2.lighting__5.3.light_casters_spot.dir/clean
 # Target rules for target CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/build.make CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/build.make CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  36
@@ -1355,8 +1355,8 @@ clean: CMakeFiles/2.lighting__5.4.light_casters_spot_soft.dir/clean
 # Target rules for target CMakeFiles/2.lighting__6.multiple_lights.dir
 
 # All Build rule for target.
-CMakeFiles/2.lighting__6.multiple_lights.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/2.lighting__6.multiple_lights.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/2.lighting__6.multiple_lights.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/2.lighting__6.multiple_lights.dir/build.make CMakeFiles/2.lighting__6.multiple_lights.dir/depend
 	$(MAKE) -f CMakeFiles/2.lighting__6.multiple_lights.dir/build.make CMakeFiles/2.lighting__6.multiple_lights.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  37
@@ -1391,8 +1391,8 @@ clean: CMakeFiles/2.lighting__6.multiple_lights.dir/clean
 # Target rules for target CMakeFiles/3.model_loading__1.model_loading.dir
 
 # All Build rule for target.
-CMakeFiles/3.model_loading__1.model_loading.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/3.model_loading__1.model_loading.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/3.model_loading__1.model_loading.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/3.model_loading__1.model_loading.dir/build.make CMakeFiles/3.model_loading__1.model_loading.dir/depend
 	$(MAKE) -f CMakeFiles/3.model_loading__1.model_loading.dir/build.make CMakeFiles/3.model_loading__1.model_loading.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  38
@@ -1427,8 +1427,8 @@ clean: CMakeFiles/3.model_loading__1.model_loading.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/build.make CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/build.make CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  39
@@ -1463,8 +1463,8 @@ clean: CMakeFiles/4.advanced_opengl__1.1.depth_testing.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/build.make CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/build.make CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  40
@@ -1499,8 +1499,8 @@ clean: CMakeFiles/4.advanced_opengl__1.2.depth_testing_view.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/build.make CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/build.make CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  41
@@ -1535,8 +1535,8 @@ clean: CMakeFiles/4.advanced_opengl__10.1.instancing_quads.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__10.2.asteroids.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/build.make CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/build.make CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  42
@@ -1571,8 +1571,8 @@ clean: CMakeFiles/4.advanced_opengl__10.2.asteroids.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/build.make CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/build.make CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  43
@@ -1607,8 +1607,8 @@ clean: CMakeFiles/4.advanced_opengl__10.3.asteroids_instanced.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/build.make CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/build.make CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  44
@@ -1643,8 +1643,8 @@ clean: CMakeFiles/4.advanced_opengl__11.anti_aliasing_offscreen.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__2.stencil_testing.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/build.make CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/build.make CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  45
@@ -1679,8 +1679,8 @@ clean: CMakeFiles/4.advanced_opengl__2.stencil_testing.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/build.make CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/build.make CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  46
@@ -1715,8 +1715,8 @@ clean: CMakeFiles/4.advanced_opengl__3.1.blending_discard.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/build.make CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/build.make CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  47
@@ -1751,8 +1751,8 @@ clean: CMakeFiles/4.advanced_opengl__3.2.blending_sort.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/build.make CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/build.make CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  48
@@ -1787,8 +1787,8 @@ clean: CMakeFiles/4.advanced_opengl__5.1.framebuffers.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/build.make CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/build.make CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  49
@@ -1823,8 +1823,8 @@ clean: CMakeFiles/4.advanced_opengl__5.2.framebuffers_exercise1.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/build.make CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/build.make CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  50
@@ -1859,8 +1859,8 @@ clean: CMakeFiles/4.advanced_opengl__6.1.cubemaps_skybox.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/build.make CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/build.make CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  51
@@ -1895,8 +1895,8 @@ clean: CMakeFiles/4.advanced_opengl__6.2.cubemaps_environment_mapping.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/build.make CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/build.make CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  52
@@ -1931,8 +1931,8 @@ clean: CMakeFiles/4.advanced_opengl__8.advanced_glsl_ubo.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/build.make CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/build.make CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  53
@@ -1967,8 +1967,8 @@ clean: CMakeFiles/4.advanced_opengl__9.1.geometry_shader_houses.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/build.make CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/build.make CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  54
@@ -2003,8 +2003,8 @@ clean: CMakeFiles/4.advanced_opengl__9.2.geometry_shader_exploding.dir/clean
 # Target rules for target CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir
 
 # All Build rule for target.
-CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/build.make CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/depend
 	$(MAKE) -f CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/build.make CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  55
@@ -2039,8 +2039,8 @@ clean: CMakeFiles/4.advanced_opengl__9.3.geometry_shader_normals.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/build.make CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/build.make CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  56
@@ -2075,8 +2075,8 @@ clean: CMakeFiles/5.advanced_lighting__1.advanced_lighting.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__2.gamma_correction.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/build.make CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/build.make CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  57
@@ -2111,8 +2111,8 @@ clean: CMakeFiles/5.advanced_lighting__2.gamma_correction.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/build.make CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/build.make CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  58
@@ -2147,8 +2147,8 @@ clean: CMakeFiles/5.advanced_lighting__3.1.1.shadow_mapping_depth.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/build.make CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/build.make CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  59
@@ -2183,8 +2183,8 @@ clean: CMakeFiles/5.advanced_lighting__3.1.2.shadow_mapping_base.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/build.make CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/build.make CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  60
@@ -2219,8 +2219,8 @@ clean: CMakeFiles/5.advanced_lighting__3.1.3.shadow_mapping.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/build.make CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/build.make CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  61
@@ -2255,8 +2255,8 @@ clean: CMakeFiles/5.advanced_lighting__3.2.1.point_shadows.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/build.make CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/build.make CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  62
@@ -2291,8 +2291,8 @@ clean: CMakeFiles/5.advanced_lighting__3.2.2.point_shadows_soft.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__4.normal_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/build.make CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/build.make CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  63
@@ -2327,8 +2327,8 @@ clean: CMakeFiles/5.advanced_lighting__4.normal_mapping.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  64
@@ -2363,8 +2363,8 @@ clean: CMakeFiles/5.advanced_lighting__5.1.parallax_mapping.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  65
@@ -2399,8 +2399,8 @@ clean: CMakeFiles/5.advanced_lighting__5.2.steep_parallax_mapping.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/build.make CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  66
@@ -2435,8 +2435,8 @@ clean: CMakeFiles/5.advanced_lighting__5.3.parallax_occlusion_mapping.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__6.hdr.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__6.hdr.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__6.hdr.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__6.hdr.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__6.hdr.dir/build.make CMakeFiles/5.advanced_lighting__6.hdr.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__6.hdr.dir/build.make CMakeFiles/5.advanced_lighting__6.hdr.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  67
@@ -2471,8 +2471,8 @@ clean: CMakeFiles/5.advanced_lighting__6.hdr.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__7.bloom.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__7.bloom.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__7.bloom.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__7.bloom.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__7.bloom.dir/build.make CMakeFiles/5.advanced_lighting__7.bloom.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__7.bloom.dir/build.make CMakeFiles/5.advanced_lighting__7.bloom.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  68
@@ -2507,8 +2507,8 @@ clean: CMakeFiles/5.advanced_lighting__7.bloom.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/build.make CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/build.make CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  69
@@ -2543,8 +2543,8 @@ clean: CMakeFiles/5.advanced_lighting__8.1.deferred_shading.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/build.make CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/build.make CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  70
@@ -2579,8 +2579,8 @@ clean: CMakeFiles/5.advanced_lighting__8.2.deferred_shading_volumes.dir/clean
 # Target rules for target CMakeFiles/5.advanced_lighting__9.ssao.dir
 
 # All Build rule for target.
-CMakeFiles/5.advanced_lighting__9.ssao.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/5.advanced_lighting__9.ssao.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/5.advanced_lighting__9.ssao.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__9.ssao.dir/build.make CMakeFiles/5.advanced_lighting__9.ssao.dir/depend
 	$(MAKE) -f CMakeFiles/5.advanced_lighting__9.ssao.dir/build.make CMakeFiles/5.advanced_lighting__9.ssao.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  71
@@ -2615,8 +2615,8 @@ clean: CMakeFiles/5.advanced_lighting__9.ssao.dir/clean
 # Target rules for target CMakeFiles/6.pbr__1.1.lighting.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__1.1.lighting.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__1.1.lighting.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__1.1.lighting.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__1.1.lighting.dir/build.make CMakeFiles/6.pbr__1.1.lighting.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__1.1.lighting.dir/build.make CMakeFiles/6.pbr__1.1.lighting.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  72
@@ -2651,8 +2651,8 @@ clean: CMakeFiles/6.pbr__1.1.lighting.dir/clean
 # Target rules for target CMakeFiles/6.pbr__1.2.lighting_textured.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__1.2.lighting_textured.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__1.2.lighting_textured.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__1.2.lighting_textured.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__1.2.lighting_textured.dir/build.make CMakeFiles/6.pbr__1.2.lighting_textured.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__1.2.lighting_textured.dir/build.make CMakeFiles/6.pbr__1.2.lighting_textured.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  73
@@ -2687,8 +2687,8 @@ clean: CMakeFiles/6.pbr__1.2.lighting_textured.dir/clean
 # Target rules for target CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/build.make CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/build.make CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  74
@@ -2723,8 +2723,8 @@ clean: CMakeFiles/6.pbr__2.1.1.ibl_irradiance_conversion.dir/clean
 # Target rules for target CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/build.make CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/build.make CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  75
@@ -2759,8 +2759,8 @@ clean: CMakeFiles/6.pbr__2.1.2.ibl_irradiance.dir/clean
 # Target rules for target CMakeFiles/6.pbr__2.2.1.ibl_specular.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/build.make CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/build.make CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  76
@@ -2795,8 +2795,8 @@ clean: CMakeFiles/6.pbr__2.2.1.ibl_specular.dir/clean
 # Target rules for target CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir
 
 # All Build rule for target.
-CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/build.make CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/depend
 	$(MAKE) -f CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/build.make CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  77
@@ -2831,8 +2831,8 @@ clean: CMakeFiles/6.pbr__2.2.2.ibl_specular_textured.dir/clean
 # Target rules for target CMakeFiles/7.in_practice__1.debugging.dir
 
 # All Build rule for target.
-CMakeFiles/7.in_practice__1.debugging.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/7.in_practice__1.debugging.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/7.in_practice__1.debugging.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/7.in_practice__1.debugging.dir/build.make CMakeFiles/7.in_practice__1.debugging.dir/depend
 	$(MAKE) -f CMakeFiles/7.in_practice__1.debugging.dir/build.make CMakeFiles/7.in_practice__1.debugging.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  78
@@ -2867,8 +2867,8 @@ clean: CMakeFiles/7.in_practice__1.debugging.dir/clean
 # Target rules for target CMakeFiles/7.in_practice__2.text_rendering.dir
 
 # All Build rule for target.
-CMakeFiles/7.in_practice__2.text_rendering.dir/all: CMakeFiles/STB_IMAGE.dir/all
 CMakeFiles/7.in_practice__2.text_rendering.dir/all: CMakeFiles/GLAD.dir/all
+CMakeFiles/7.in_practice__2.text_rendering.dir/all: CMakeFiles/STB_IMAGE.dir/all
 	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/depend
 	$(MAKE) -f CMakeFiles/7.in_practice__2.text_rendering.dir/build.make CMakeFiles/7.in_practice__2.text_rendering.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/snow2t/Workspace/LearnOpenGL_AVM/build/CMakeFiles  79

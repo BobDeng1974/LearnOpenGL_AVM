@@ -32,6 +32,8 @@ CMakeFiles/3.model_loading__1.model_loading.dir/src/3.model_loading/1.model_load
  ../includes/assimp/vector2.inl
  ../includes/assimp/vector3.h
  ../includes/assimp/vector3.inl
+ ../includes/freetype/config/ftheader.h
+ ../includes/ft2build.h
  ../includes/glad/glad.h
  ../includes/glm/common.hpp
  ../includes/glm/detail/_fixes.hpp
