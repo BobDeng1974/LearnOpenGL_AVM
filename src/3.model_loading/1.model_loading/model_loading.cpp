@@ -48,6 +48,12 @@ const unsigned int TOP_VIEW_HEIGHT = 720;
 const unsigned int FREE_VIEW_WIDTH = 1280;
 const unsigned int FREE_VIEW_HEIGHT = 720;
 
+bool DOOR_L1 = false;
+bool DOOR_L2 = false;
+bool DOOR_R1 = false;
+bool DOOR_R2 = false;
+bool DOOR_B = false;
+
 /// Holds all state information relevant to a character as loaded using FreeType
 struct Character {
     GLuint TextureID;   // ID handle of the glyph texture
@@ -767,6 +773,8 @@ int main()
 
     // ------------------------------load car obj--------------------------------------begin
     Model ourModel(FileSystem::getPath("resources/objects/nanosuit/wey_vv6.obj"));
+    //Model ourModel(FileSystem::getPath("resources/objects/nanosuit/VV6.obj"));
+    //Model ourModel(FileSystem::getPath("resources/objects/nanosuit/pas.obj"));
     // ------------------------------load car obj--------------------------------------end
 
     // ------------------------------build and compile shaders------------------------begin
@@ -1413,6 +1421,12 @@ int main()
     unsigned int cameraNoChoosedTexture = loadTexture(FileSystem::getPath("resources/textures/camera_no_choosed.png").c_str());
     unsigned int cameraChoosedTexture = loadTexture(FileSystem::getPath("resources/textures/camera_choosed.png").c_str());
 
+    unsigned int doolOpenNum1 = loadTexture(FileSystem::getPath("resources/textures/001.png").c_str());
+    unsigned int doolOpenNum2 = loadTexture(FileSystem::getPath("resources/textures/002.png").c_str());
+    unsigned int doolOpenNum3 = loadTexture(FileSystem::getPath("resources/textures/003.png").c_str());
+    unsigned int doolOpenNum4 = loadTexture(FileSystem::getPath("resources/textures/004.png").c_str());
+    unsigned int doolOpenNum5 = loadTexture(FileSystem::getPath("resources/textures/005.png").c_str());
+
     // ---------------------------ground------------------------------end
 
     float transparentVertices[] = {
@@ -1583,7 +1597,7 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        ourModel.Draw_Car(carShader, wheelAngle);
+        ourModel.Draw_Car(carShader, wheelAngle, DOOR_L1, DOOR_L2, DOOR_R1, DOOR_R2, DOOR_B);
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
@@ -1926,6 +1940,51 @@ int main()
         glBindVertexArray(0);
         // x:[] y:[]
 
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::translate(modelCamera, glm::vec3(-0.8f, -0.95f, 0.0f));
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.05f, 0.05f, 0.05f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, doolOpenNum1);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::translate(modelCamera, glm::vec3(-0.4f, -0.95f, 0.0f));
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.05f, 0.05f, 0.05f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, doolOpenNum2);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -0.95f, 0.0f));
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.05f, 0.05f, 0.05f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, doolOpenNum3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.4f, -0.95f, 0.0f));
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.05f, 0.05f, 0.05f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, doolOpenNum4);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.8f, -0.95f, 0.0f));
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.05f, 0.05f, 0.05f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, doolOpenNum5);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
     }
 
 
@@ -1968,7 +2027,7 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        ourModel.Draw_Car(carShader, wheelAngle);
+        ourModel.Draw_Car(carShader, wheelAngle, DOOR_L1, DOOR_L2, DOOR_R1, DOOR_R2, DOOR_B);
 
         //------------------------draw Maximum Angle of rotation---------------------
         shaderProgramMaxAngle.use();
@@ -2160,7 +2219,8 @@ int main()
         shader.use();
         glUniformMatrix4fv(glGetUniformLocation(shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(fontprojection));
 
-        RenderText(shader, "Please pay attention to the surrounding environment", 15.0f, 650.0f, 1.0f, glm::vec3(1.0, 0.0f, 0.0f), fontVAO, fontVBO);
+        RenderText(shader, "Please pay attention to the surrounding environment", 200.0f, 650.0f, 0.7f, glm::vec3(1.0, 0.0f, 0.0f), fontVAO, fontVBO);
+        RenderText(shader, string("Steering wheel Angle : [") + std::to_string(wheelAngle) + "]", 15.0f, 25.0f, 0.3f, glm::vec3(0.0, 1.0f, 0.0f), fontVAO, fontVBO);
 
 
         //--------------------on screen-------------------
@@ -2272,43 +2332,23 @@ void processInput(GLFWwindow *window)
 
 //----------------------------------------------------------------
     // if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
-    //     //hou zuo
-    //     Yaw = 220.0f;
-    //     Pitch = 28.0f;
-    //     radius = 700.0f;
-    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    //     DOOR_L1 = !DOOR_L1;
     // }
 
     // if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
-    //     //hou you
-    //     Yaw = 140.0f;
-    //     Pitch = 28.0f;
-    //     radius = 700.0f;
-    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    //     DOOR_L2 = !DOOR_L2;
     // }
 
     // if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
-    //     //qian zuo
-    //     Yaw = 319.0f;
-    //     Pitch = 28.0f;
-    //     radius = 700.0f;
-    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    //     DOOR_R1 = !DOOR_R1;
     // }
 
     // if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS) {
-    //     //qian you
-    //     Yaw = 41.0f;
-    //     Pitch = 28.0f;
-    //     radius = 700.0f;
-    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    //     DOOR_R2 = !DOOR_R2;
     // }
 
     // if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS) {
-    //     //ding
-    //     Yaw = 180.0f;
-    //     Pitch = 89.0f;
-    //     radius = 900.0;
-    //     at = glm::vec3(0.0f, 0.0f, 0.0f);
+    //     DOOR_B = !DOOR_B;
     // }
 
     // if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS) {
@@ -2584,6 +2624,22 @@ void processButtonLeftPress()
         }
     }else{
         ;
+    }
+
+    if(currentCursorY >= 680 && currentCursorY <= 720){
+        if(currentCursorX >= 50 && currentCursorX <= 80){
+            DOOR_L1 = !DOOR_L1;
+        }else if(currentCursorX >= 180 && currentCursorX <= 210){
+            DOOR_L2 = !DOOR_L2;
+        }else if(currentCursorX >= 300 && currentCursorX <= 330){
+            DOOR_R1 = !DOOR_R1;
+        }else if(currentCursorX >= 430 && currentCursorX <= 460){
+            DOOR_R2 = !DOOR_R2;
+        }else if(currentCursorX >= 560 && currentCursorX <= 590){
+            DOOR_B = !DOOR_B;
+        }else{
+            ;
+        }
     }
 }
 

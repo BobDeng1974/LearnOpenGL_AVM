@@ -67,13 +67,14 @@ public:
     }
 
     // draws the model, and thus all its meshes
-    void Draw_Car(Shader shader, float angle)
+    void Draw_Car(Shader shader, float angle, bool door_L1, bool door_L2, bool door_R1, bool door_R2, bool boor_B)
     {
         static float goOrBackAngle = 0.0f;
 
         float _angle;
 
         //cout << "angle = " << angle << endl;
+        //cout << "door_L1 = " << door_L1 << " door_L2 = " << door_L2 << " door_R1 = " << door_R1 << " door_R2 = " << door_R2 << " boor_B = " << boor_B << endl;
 
         if(angle >= -46.0f && angle <= 46.0f){
             goOrBackAngle -= 1.0f;
@@ -87,7 +88,9 @@ public:
 
         // cout << "meshes.size():: " << meshes.size() << endl;
         // cout << "Wheel_01_meshes.size():: " << Wheel_01_meshes.size() << endl;
+        // cout << "Wheel_02_meshes.size():: " << Wheel_02_meshes.size() << endl;
         // cout << "Wheel_03_meshes.size():: " << Wheel_03_meshes.size() << endl;
+        // cout << "Wheel_04_meshes.size():: " << Wheel_04_meshes.size() << endl;
         // cout << "Door_L1_meshes.size():: " << Door_L1_meshes.size() << endl;
         // cout << "Door_L2_meshes.size():: " << Door_L2_meshes.size() << endl;
         // cout << "Door_R1_meshes.size():: " << Door_R1_meshes.size() << endl;
@@ -97,9 +100,11 @@ public:
         // cout << endl;
         // cout << endl;
 
-        // meshes.size():: 32045
+        // meshes.size():: 29532
         // Wheel_01_meshes.size():: 1256
+        // Wheel_02_meshes.size():: 1256
         // Wheel_03_meshes.size():: 1257
+        // Wheel_04_meshes.size():: 1257
         // Door_L1_meshes.size():: 626
         // Door_L2_meshes.size():: 587
         // Door_R1_meshes.size():: 626
@@ -110,24 +115,101 @@ public:
             meshes[i].Draw(shader);
         }
 
-        for(unsigned int i = 0; i < Door_L1_meshes.size(); i++){
-            Door_L1_meshes[i].Draw(shader);
+        if(door_L1){
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            model = glm::translate(model, glm::vec3(81.0f, 101.0f, -89.0f));
+            model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(-81.0f, -101.0f, 89.0f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_L1_meshes.size(); i++){
+                Door_L1_meshes[i].Draw(shader);
+            }
+        }else{
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_L1_meshes.size(); i++){
+                Door_L1_meshes[i].Draw(shader);
+            }
         }
 
-        for(unsigned int i = 0; i < Door_L2_meshes.size(); i++){
-            Door_L2_meshes[i].Draw(shader);
+        if(door_L2){
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            model = glm::translate(model, glm::vec3(-28.0f, 110.0f, -89.0f));
+            model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(28.0f, -110.0f, 89.0f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_L2_meshes.size(); i++){
+                Door_L2_meshes[i].Draw(shader);
+            }
+        }else{
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_L2_meshes.size(); i++){
+                Door_L2_meshes[i].Draw(shader);
+            }
         }
 
-        for(unsigned int i = 0; i < Door_R1_meshes.size(); i++){
-            Door_R1_meshes[i].Draw(shader);
+        if(door_R1){
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            model = glm::translate(model, glm::vec3(81.0f, 101.0f, 89.0f));
+            model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(-81.0f, -101.0f, -89.0f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_R1_meshes.size(); i++){
+                Door_R1_meshes[i].Draw(shader);
+            }
+        }else{
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_R1_meshes.size(); i++){
+                Door_R1_meshes[i].Draw(shader);
+            }
         }
 
-        for(unsigned int i = 0; i < Door_R2_meshes.size(); i++){
-            Door_R2_meshes[i].Draw(shader);
+
+        if(door_R2){
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            model = glm::translate(model, glm::vec3(-28.0f, 110.0f, 89.0f));
+            model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::translate(model, glm::vec3(28.0f, -110.0f, -89.0f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_R2_meshes.size(); i++){
+                Door_R2_meshes[i].Draw(shader);
+            }
+        }else{
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_R2_meshes.size(); i++){
+                Door_R2_meshes[i].Draw(shader);
+            }
         }
 
-        for(unsigned int i = 0; i < Door_B_meshes.size(); i++){
-            Door_B_meshes[i].Draw(shader);
+
+        if(boor_B){
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            model = glm::translate(model, glm::vec3(-169.0f, 164.0f, 0.0f));
+            model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+            model = glm::translate(model, glm::vec3(169.0f, -164.0f, 0.0f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_B_meshes.size(); i++){
+                Door_B_meshes[i].Draw(shader);
+            }
+        }else{
+            glm::mat4 model = glm::mat4(1.0);
+            model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+            shader.setMat4("model", model);
+            for(unsigned int i = 0; i < Door_B_meshes.size(); i++){
+                Door_B_meshes[i].Draw(shader);
+            }
         }
 
         glm::mat4 model = glm::mat4(1.0);
