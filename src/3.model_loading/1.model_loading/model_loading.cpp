@@ -39,7 +39,7 @@ void processInput(GLFWwindow *window);
 
 void RenderText(Shader &shader, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color, unsigned int VAO, unsigned int VBO);
 
-const unsigned int SCREEN_WIDTH = 1920;
+const unsigned int SCREEN_WIDTH = 2080;
 const unsigned int SCREEN_HEIGHT = 720;
 
 const unsigned int TOP_VIEW_WIDTH = 640;
@@ -47,6 +47,9 @@ const unsigned int TOP_VIEW_HEIGHT = 720;
 
 const unsigned int FREE_VIEW_WIDTH = 1280;
 const unsigned int FREE_VIEW_HEIGHT = 720;
+
+const unsigned int NAVIGATION_BAR_VIEW_WIDTH = 160;
+const unsigned int NAVIGATION_BAR_VIEW_HEIGHT = 720;
 
 bool DOOR_L1 = false;
 bool DOOR_L2 = false;
@@ -83,6 +86,14 @@ int cameraRightUp2Down = 0;
 
 int cameraLeftDown2Up = 0;
 int cameraRightDown2Up = 0;
+
+int navigationOne = 0;
+int navigationTwo = 0;
+int navigationThree = 0;
+int navigationFour = 0;
+int navigationFive = 0;
+int navigationSix = 0;
+int navigationSeven = 0;
 
 // camera
 Camera camera(glm::vec3(0.0f, 20.0f, 30.0f));
@@ -1427,6 +1438,22 @@ int main()
     unsigned int doolOpenNum4 = loadTexture(FileSystem::getPath("resources/textures/004.png").c_str());
     unsigned int doolOpenNum5 = loadTexture(FileSystem::getPath("resources/textures/005.png").c_str());
 
+    unsigned int navigationBarBg = loadTexture(FileSystem::getPath("resources/textures/navigationBar/bg.png").c_str());
+    unsigned int navigation_01_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/01_normal.png").c_str());
+    unsigned int navigation_01_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/01_disable.png").c_str());
+    unsigned int navigation_02_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/02_normal.png").c_str());
+    unsigned int navigation_02_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/02_disable.png").c_str());
+    unsigned int navigation_03_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/03_normal.png").c_str());
+    unsigned int navigation_03_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/03_disable.png").c_str());
+    unsigned int navigation_04_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/04_normal.png").c_str());
+    unsigned int navigation_04_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/04_disable.png").c_str());
+    unsigned int navigation_05_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/05_normal.png").c_str());
+    unsigned int navigation_05_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/05_disable.png").c_str());
+    unsigned int navigation_06_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/06_normal.png").c_str());
+    unsigned int navigation_06_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/06_disable.png").c_str());
+    unsigned int navigation_07_normal = loadTexture(FileSystem::getPath("resources/textures/navigationBar/07_normal.png").c_str());
+    unsigned int navigation_07_disable = loadTexture(FileSystem::getPath("resources/textures/navigationBar/07_disable.png").c_str());
+
     // ---------------------------ground------------------------------end
 
     float transparentVertices[] = {
@@ -1552,6 +1579,79 @@ int main()
             r = 1.0f;
             g = 0.0f;
         }
+
+    {
+        glDisable(GL_DEPTH_TEST);
+
+        shaderCamera.use();
+        shaderCamera.setMat4("model", glm::mat4(1.0));
+
+        //------------------------------------------navigation bar view--------------------------------------------------------------
+        glViewport(TOP_VIEW_WIDTH, 0, (GLsizei)NAVIGATION_BAR_VIEW_WIDTH, (GLsizei)NAVIGATION_BAR_VIEW_HEIGHT);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationBarBg);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 614, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationOne == 1 ? navigation_01_normal : navigation_01_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 515, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationTwo == 1 ? navigation_02_normal : navigation_02_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 415, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationThree == 1 ? navigation_03_normal : navigation_03_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 315, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationFour == 1 ? navigation_04_normal : navigation_04_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 215, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationFive == 1 ? navigation_05_normal : navigation_05_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 115, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationSix == 1 ? navigation_06_normal : navigation_06_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        //--------------------------
+        glViewport(TOP_VIEW_WIDTH + 35, 16, (GLsizei)90, (GLsizei)90);
+
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, navigationSeven == 1 ? navigation_07_normal : navigation_07_disable);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+
+        glEnable(GL_DEPTH_TEST);
+    }
 
     {
         // //------------------------------------------top view--------------------------------------------------------------
@@ -1987,12 +2087,8 @@ int main()
 
     }
 
-
-
         //------------------------------------------right view--------------------------------------------------------------
-
-        glViewport(TOP_VIEW_WIDTH, 0, (GLsizei)FREE_VIEW_WIDTH, (GLsizei)FREE_VIEW_HEIGHT);
-
+        glViewport(TOP_VIEW_WIDTH + NAVIGATION_BAR_VIEW_WIDTH , 0, (GLsizei)FREE_VIEW_WIDTH, (GLsizei)FREE_VIEW_HEIGHT);
 
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)FREE_VIEW_WIDTH / (float)FREE_VIEW_HEIGHT, 0.1f, 1000.0f);
 
@@ -2027,192 +2123,194 @@ int main()
         glm::mat4 model = glm::mat4(1.0);
         model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
         carShader.setMat4("model", model);
-        ourModel.Draw_Car(carShader, wheelAngle, DOOR_L1, DOOR_L2, DOOR_R1, DOOR_R2, DOOR_B);
+        ourModel.Draw_Car(carShader, wheelAngle, /*DOOR_L1*/false, /*DOOR_L2*/false, /*DOOR_R1*/false, /*DOOR_R2*/false, /*DOOR_B*/false);
 
         //------------------------draw Maximum Angle of rotation---------------------
-        shaderProgramMaxAngle.use();
-        shaderProgramMaxAngle.setMat4("view", view);
-        shaderProgramMaxAngle.setMat4("projection", projection);
-        shaderProgramMaxAngle.setMat4("model", model);
+        if(navigationFour == 1) {
+            shaderProgramMaxAngle.use();
+            shaderProgramMaxAngle.setMat4("view", view);
+            shaderProgramMaxAngle.setMat4("projection", projection);
+            shaderProgramMaxAngle.setMat4("model", model);
 
-        shaderProgramMaxAngle.setVec3("color", 1.0f, 0.0f, 0.0f);
-        glBindVertexArray(maxAngleVAO);
+            shaderProgramMaxAngle.setVec3("color", 1.0f, 0.0f, 0.0f);
+            glBindVertexArray(maxAngleVAO);
 
-        if(wheelAngle == 45.0f || wheelAngle == -45.0f || wheelAngle == 135.0f || wheelAngle == 225.0f){
-            ;
-        }else if(wheelAngle == 0.0f){
-            shaderProgramMaxAngle.setFloat("Index", 45.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-            shaderProgramMaxAngle.setFloat("Index", -45.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle > 0.0f && wheelAngle < 45.0f){
-            shaderProgramMaxAngle.setFloat("Index", 45.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle < 0.0f && wheelAngle > -45.0f){
-            shaderProgramMaxAngle.setFloat("Index", -45.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle == 180.0f){
-            shaderProgramMaxAngle.setFloat("Index", 135.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-            shaderProgramMaxAngle.setFloat("Index", 225.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle > 135.0f && wheelAngle < 180.0f){
-            shaderProgramMaxAngle.setFloat("Index", 135.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else if(wheelAngle < 225.0f && wheelAngle > 180.0f){
-            shaderProgramMaxAngle.setFloat("Index", 225.0f);
-            glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
-        }else{
-            assert(0);
+            if(wheelAngle == 45.0f || wheelAngle == -45.0f || wheelAngle == 135.0f || wheelAngle == 225.0f){
+                ;
+            }else if(wheelAngle == 0.0f){
+                shaderProgramMaxAngle.setFloat("Index", 45.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+                shaderProgramMaxAngle.setFloat("Index", -45.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else if(wheelAngle > 0.0f && wheelAngle < 45.0f){
+                shaderProgramMaxAngle.setFloat("Index", 45.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else if(wheelAngle < 0.0f && wheelAngle > -45.0f){
+                shaderProgramMaxAngle.setFloat("Index", -45.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else if(wheelAngle == 180.0f){
+                shaderProgramMaxAngle.setFloat("Index", 135.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+                shaderProgramMaxAngle.setFloat("Index", 225.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else if(wheelAngle > 135.0f && wheelAngle < 180.0f){
+                shaderProgramMaxAngle.setFloat("Index", 135.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else if(wheelAngle < 225.0f && wheelAngle > 180.0f){
+                shaderProgramMaxAngle.setFloat("Index", 225.0f);
+                glDrawArrays(GL_TRIANGLES, 0, maxAngleRectangleNum*6);
+            }else{
+                assert(0);
+            }
+
+            //------------------------draw Dynimic Line---------------------
+            shaderProgram.use();
+            shaderProgram.setMat4("view", view);
+            shaderProgram.setMat4("projection", projection);
+            shaderProgram.setMat4("model", model);
+            shaderProgram.setFloat("Index", wheelAngle);
+            shaderProgram.setVec3("color", 0.0f, 1.0f, 0.0f);
+            glBindVertexArray(circleVAO);
+            glDrawArrays(GL_TRIANGLES, 0, RectangleNum*6);
+
+            //------------------------draw Dynimic Line area---------------------
+            // shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
+            // glBindVertexArray(areaVAO);
+            // glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
         }
 
-        //------------------------draw Dynimic Line---------------------
-        shaderProgram.use();
-        shaderProgram.setMat4("view", view);
-        shaderProgram.setMat4("projection", projection);
-        shaderProgram.setMat4("model", model);
-        shaderProgram.setFloat("Index", wheelAngle);
-        shaderProgram.setVec3("color", 0.0f, 1.0f, 0.0f);
-        glBindVertexArray(circleVAO);
-        glDrawArrays(GL_TRIANGLES, 0, RectangleNum*6);
 
-        //------------------------draw Dynimic Line area---------------------
-        // shaderProgram.setVec3("color", 0.0f, 0.0f, 1.0f);
-        // glBindVertexArray(areaVAO);
-        // glDrawArrays(GL_TRIANGLES, 0, areaRectangleNum*6);
+        if(navigationFive == 1) {
+            //--------------------draw color block-------------------
+            radarShader.use();
+            radarShader.setMat4("view", view);
+            radarShader.setMat4("projection", projection);
+            radarShader.setVec3("color", r, g, 0.0f);
 
-
-
-
-        //--------------------draw color block-------------------
-        radarShader.use();
-        radarShader.setMat4("view", view);
-        radarShader.setMat4("projection", projection);
-        radarShader.setVec3("color", r, g, 0.0f);
-
-        //--------------------------------- front -----------------------
-        glm::mat4 model2;
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        //--------------------------------- back -----------------------
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 20.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
-        model2 = glm::rotate(model2, glm::radians(-15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        model2 = glm::mat4(1.0);
-        model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-        model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 60.0f));
-        model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
-        model2 = glm::rotate(model2, glm::radians(15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
-        model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
-        radarShader.setMat4("model", model2);
-        glBindVertexArray(radarRectangularLineVAO);
-        glDrawArrays(GL_LINE_STRIP, 0, 12);
-        glBindVertexArray(radarRectangularAreaVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 54);
-
-        //--------------------------------- left -----------------------
-        for(int i = 140; i >= -160; )
-        {
+            //--------------------------------- front -----------------------
+            glm::mat4 model2;
             model2 = glm::mat4(1.0);
             model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, -(_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
+            model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -20.0f));
             radarShader.setMat4("model", model2);
             glBindVertexArray(radarRectangularLineVAO);
             glDrawArrays(GL_LINE_STRIP, 0, 12);
             glBindVertexArray(radarRectangularAreaVAO);
             glDrawArrays(GL_TRIANGLES, 0, 54);
 
-            i -= 60;
-        }
-
-        //--------------------------------- right -----------------------
-        for(int i = 140; i >= -160; )
-        {
             model2 = glm::mat4(1.0);
             model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
-            model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, (_distance-140)));
-            model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
+            model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 20.0f));
             radarShader.setMat4("model", model2);
             glBindVertexArray(radarRectangularLineVAO);
             glDrawArrays(GL_LINE_STRIP, 0, 12);
             glBindVertexArray(radarRectangularAreaVAO);
             glDrawArrays(GL_TRIANGLES, 0, 54);
 
-            i -= 60;
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, -60.0f));
+            model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
+            model2 = glm::rotate(model2, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
+            model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(_distance, 0.0f, 60.0f));
+            model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
+            model2 = glm::rotate(model2, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
+            model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            //--------------------------------- back -----------------------
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -20.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 20.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, -60.0f));
+            model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * 5.0f));
+            model2 = glm::rotate(model2, glm::radians(-15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
+            model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * -5.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            model2 = glm::mat4(1.0);
+            model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+            model2 = glm::translate(model2, glm::vec3(-_distance, 0.0f, 60.0f));
+            model2 = glm::translate(model2, glm::vec3(2.0f, 0.0f, 3.6f * -5.0f));
+            model2 = glm::rotate(model2, glm::radians(15.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+            model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.3f));
+            model2 = glm::translate(model2, glm::vec3(-2.0f, 0.0f, 3.6f * 5.0f));
+            radarShader.setMat4("model", model2);
+            glBindVertexArray(radarRectangularLineVAO);
+            glDrawArrays(GL_LINE_STRIP, 0, 12);
+            glBindVertexArray(radarRectangularAreaVAO);
+            glDrawArrays(GL_TRIANGLES, 0, 54);
+
+            //--------------------------------- left -----------------------
+            for(int i = 140; i >= -160; )
+            {
+                model2 = glm::mat4(1.0);
+                model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+                model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, -(_distance-140)));
+                model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+                model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
+                radarShader.setMat4("model", model2);
+                glBindVertexArray(radarRectangularLineVAO);
+                glDrawArrays(GL_LINE_STRIP, 0, 12);
+                glBindVertexArray(radarRectangularAreaVAO);
+                glDrawArrays(GL_TRIANGLES, 0, 54);
+
+                i -= 60;
+            }
+
+            //--------------------------------- right -----------------------
+            for(int i = 140; i >= -160; )
+            {
+                model2 = glm::mat4(1.0);
+                model2 = glm::scale(model2, glm::vec3(0.05f, 0.05f, 0.05f));
+                model2 = glm::translate(model2, glm::vec3((float)i, 0.0f, (_distance-140)));
+                model2 = glm::rotate(model2, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+                model2 = glm::scale(model2, glm::vec3(1.0f, 1.0f, 1.5f));
+                radarShader.setMat4("model", model2);
+                glBindVertexArray(radarRectangularLineVAO);
+                glDrawArrays(GL_LINE_STRIP, 0, 12);
+                glBindVertexArray(radarRectangularAreaVAO);
+                glDrawArrays(GL_TRIANGLES, 0, 54);
+
+                i -= 60;
+            }
         }
 
         glm::mat4 fontprojection = glm::ortho(0.0f, static_cast<GLfloat>(FREE_VIEW_WIDTH), 0.0f, static_cast<GLfloat>(FREE_VIEW_HEIGHT));
@@ -2637,6 +2735,26 @@ void processButtonLeftPress()
             DOOR_R2 = !DOOR_R2;
         }else if(currentCursorX >= 560 && currentCursorX <= 590){
             DOOR_B = !DOOR_B;
+        }else{
+            ;
+        }
+    }
+
+    if(currentCursorX >= 675 && currentCursorX <= 765){
+        if(currentCursorY >= 16 && currentCursorY <= 109){
+            navigationOne = !navigationOne;
+        }else if(currentCursorY >= 115 && currentCursorY <= 208){
+            navigationTwo = !navigationTwo;
+        }else if(currentCursorY >= 215 && currentCursorY <= 310){
+            navigationThree = !navigationThree;
+        }else if(currentCursorY >= 315 && currentCursorY <= 408){
+            navigationFour = !navigationFour;
+        }else if(currentCursorY >= 415 && currentCursorY <= 509){
+            navigationFive = !navigationFive;
+        }else if(currentCursorY >= 515 && currentCursorY <= 608){
+            navigationSix = !navigationSix;
+        }else if(currentCursorY >= 614 && currentCursorY <= 709){
+            navigationSeven = !navigationSeven;
         }else{
             ;
         }
