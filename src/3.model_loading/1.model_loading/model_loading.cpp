@@ -71,15 +71,17 @@ unsigned int currentCursorX;
 unsigned int currentCursorY;
 
 int cameraUpLeft = 0;
-int cameraUp = 0;
+int cameraUp2Down = 0;
+int cameraUp2Up = 0;
 int cameraUpRight = 0;
 
 int cameraDownLeft = 0;
-int cameraDown = 0;
+int cameraDown2Up = 0;
+int cameraDown2Down = 0;
 int cameraDownRight = 0;
 
 int cameraLeft = 0;
-int cameraRight = 0;
+int cameraRight = 1;
 
 int cameraLeftUp2Down = 0;
 int cameraRightUp2Down = 0;
@@ -103,9 +105,10 @@ Camera camera(glm::vec3(0.0f, 20.0f, 30.0f));
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+//cameraRight = 1;
 float radius = 700.0f;//30.0f;
 float Yaw = 90.0f;
-float Pitch = 45.0f;
+float Pitch = 28.0f;
 
 float _distance = 250.0f;
 float r = 1.0f;
@@ -1887,7 +1890,7 @@ int main()
 
         shaderCamera.use();
 
-        assert(cameraUpLeft + cameraUp + cameraUpRight + cameraDownLeft + cameraDown + cameraDownRight + cameraLeft + cameraRight + cameraLeftUp2Down + cameraRightUp2Down + cameraLeftDown2Up + cameraRightDown2Up <= 1);
+        assert(cameraUpLeft + cameraUp2Down + cameraUp2Up + cameraUpRight + cameraDownLeft + cameraDown2Up + cameraDown2Down + cameraDownRight + cameraLeft + cameraRight + cameraLeftUp2Down + cameraRightUp2Down + cameraLeftDown2Up + cameraRightDown2Up <= 1);
 
         //left
         glm::mat4 modelCamera = glm::mat4(1.0);
@@ -1912,26 +1915,50 @@ int main()
         glBindVertexArray(0);
         // x:[] y:[]
 
-        //up
+        //up to down
         modelCamera = glm::mat4(1.0);
         modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
         modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 8.0f, 0.0f));
-        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(270.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         shaderCamera.setMat4("model", modelCamera);
         glBindVertexArray(transparentVAO);
-        glBindTexture(GL_TEXTURE_2D, (cameraUp == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glBindTexture(GL_TEXTURE_2D, (cameraUp2Down == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
         // x:[] y:[]
 
-        //down
+        //up to up
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, 4.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraUp2Up == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //down to up
         modelCamera = glm::mat4(1.0);
         modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
         modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -8.0f, 0.0f));
+        modelCamera = glm::rotate(modelCamera, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        shaderCamera.setMat4("model", modelCamera);
+        glBindVertexArray(transparentVAO);
+        glBindTexture(GL_TEXTURE_2D, (cameraDown2Up == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(0);
+        // x:[] y:[]
+
+        //down to down
+        modelCamera = glm::mat4(1.0);
+        modelCamera = glm::scale(modelCamera, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelCamera = glm::translate(modelCamera, glm::vec3(0.0f, -4.0f, 0.0f));
         modelCamera = glm::rotate(modelCamera, glm::radians(270.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         shaderCamera.setMat4("model", modelCamera);
         glBindVertexArray(transparentVAO);
-        glBindTexture(GL_TEXTURE_2D, (cameraDown == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
+        glBindTexture(GL_TEXTURE_2D, (cameraDown2Down == 1 ? cameraChoosedTexture : cameraNoChoosedTexture));
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
         // x:[] y:[]
@@ -2344,6 +2371,35 @@ int main()
     glDeleteBuffers(1, &fontVBO);
 
 
+    glDeleteTextures(1, &floorTexture);
+    glDeleteTextures(1, &transparentTexture);
+
+    glDeleteTextures(1, &cameraNoChoosedTexture);
+    glDeleteTextures(1, &cameraChoosedTexture);
+
+    glDeleteTextures(1, &doolOpenNum1);
+    glDeleteTextures(1, &doolOpenNum2);
+    glDeleteTextures(1, &doolOpenNum3);
+    glDeleteTextures(1, &doolOpenNum4);
+    glDeleteTextures(1, &doolOpenNum5);
+
+    glDeleteTextures(1, &navigationBarBg);
+    glDeleteTextures(1, &navigation_01_normal);
+    glDeleteTextures(1, &navigation_01_disable);
+    glDeleteTextures(1, &navigation_02_normal);
+    glDeleteTextures(1, &navigation_02_disable);
+    glDeleteTextures(1, &navigation_03_normal);
+    glDeleteTextures(1, &navigation_03_disable);
+    glDeleteTextures(1, &navigation_04_normal);
+    glDeleteTextures(1, &navigation_04_disable);
+    glDeleteTextures(1, &navigation_05_normal);
+    glDeleteTextures(1, &navigation_05_disable);
+    glDeleteTextures(1, &navigation_06_normal);
+    glDeleteTextures(1, &navigation_06_disable);
+    glDeleteTextures(1, &navigation_07_normal);
+    glDeleteTextures(1, &navigation_07_disable);
+
+
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
 
@@ -2561,15 +2617,15 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     currentCursorX = int(xpos);
     currentCursorY = int(ypos);
 
-    //printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
+    printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
 }
 
 void processButtonLeftPress()
 {
     if(currentCursorX >= 100 && currentCursorX <= 150){
         if(currentCursorY >= 50 && currentCursorY <= 100){
-            cameraUpLeft = 1; cameraUp = cameraUpRight = 0;
-            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraUpLeft = 1; cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
@@ -2579,19 +2635,19 @@ void processButtonLeftPress()
             radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
         }else if(currentCursorY >= 330 && currentCursorY <= 380){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = 1;  cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
             Yaw = -90.0f;
-            Pitch = 45.0f;
+            Pitch = 28.0f;
             radius = 700.0;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
         }else if(currentCursorY >= 620 && currentCursorY <= 670){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft = 1; cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft = 1; cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
@@ -2606,25 +2662,25 @@ void processButtonLeftPress()
 
     }else if(currentCursorX >= 160 && currentCursorX <= 210){
         if(currentCursorY >= 150 && currentCursorY <= 200){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = 1;  cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
             Yaw = 346.0f;
-            Pitch = 15.0f;
+            Pitch = 28.0f;
             radius = 500.0;
             at = glm::vec3(0.0f, 0.0f, -300.0f);
         }else if(currentCursorY >= 510 && currentCursorY <= 560){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = 1;  cameraRightDown2Up = 0;
 
             Yaw = 194.0f;
-            Pitch = 15.0f;
+            Pitch = 28.0f;
             radius = 500.0;
             at = glm::vec3(0.0f, 0.0f, -300.0f);
         }else{
@@ -2632,8 +2688,19 @@ void processButtonLeftPress()
         }
     }else if(currentCursorX >= 300 && currentCursorX <= 350){
         if(currentCursorY >= 50 && currentCursorY <= 100){
-            cameraUpLeft = 0; cameraUp = 1;  cameraUpRight = 0;
-            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraUpLeft = 0; cameraUp2Down = 1;  cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up =  cameraRightDown2Up = 0;
+
+            Yaw = 0.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 190 && currentCursorY <= 240){
+            cameraUpLeft = cameraUp2Down = 0;  cameraUp2Up = 1;  cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up =  cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
@@ -2642,9 +2709,9 @@ void processButtonLeftPress()
             Pitch = 119.0f;
             radius = 400.0;
             at = glm::vec3(366.0f, 0.0f, 0.0f);
-        }else if(currentCursorY >= 620 && currentCursorY <= 670){
-            cameraUpLeft = cameraUp =  cameraUpRight = 0;
-            cameraDownLeft = 0;  cameraDown = 1; cameraDownRight = 0;
+        }else if(currentCursorY >= 480 && currentCursorY <= 530){
+            cameraUpLeft = cameraUp2Down = cameraUp2Up =  cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up = 0; cameraDown2Down = 1;  cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
@@ -2653,30 +2720,41 @@ void processButtonLeftPress()
             Pitch = 119.0f;
             radius = 400.0;
             at = glm::vec3(-366.0f, 0.0f, 0.0f);
+        }else if(currentCursorY >= 620 && currentCursorY <= 670){
+            cameraUpLeft = cameraUp2Down = cameraUp2Up =  cameraUpRight = 0;
+            cameraDownLeft = 0;  cameraDown2Up = 1; cameraDown2Down = cameraDownRight = 0;
+            cameraLeft = cameraRight = 0;
+            cameraLeftUp2Down = cameraRightUp2Down = 0;
+            cameraLeftDown2Up =  cameraRightDown2Up = 0;
+
+            Yaw = 180.0f;
+            Pitch = 28.0f;
+            radius = 700.0f;
+            at = glm::vec3(0.0f, 0.0f, 0.0f);
         }else{
             ;
         }
     }else if(currentCursorX >= 420 && currentCursorX <= 470){
         if(currentCursorY >= 150 && currentCursorY <= 200){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = 0;  cameraRightUp2Down = 1;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
             Yaw = 14.0f;
-            Pitch = 15.0f;
+            Pitch = 28.0f;
             radius = 500.0;
             at = glm::vec3(0.0f, 0.0f, 300.0f);
         }else if(currentCursorY >= 510 && currentCursorY <= 560){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft =  cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft =  cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = 0; cameraRightDown2Up = 1;
 
             Yaw = 166.0f;
-            Pitch = 15.0f;
+            Pitch = 28.0f;
             radius = 500.0;
             at = glm::vec3(0.0f, 0.0f, 300.0f);
         }else{
@@ -2684,8 +2762,8 @@ void processButtonLeftPress()
         }
     }else if(currentCursorX >= 500 && currentCursorX <= 550){
         if(currentCursorY >= 50 && currentCursorY <= 100){
-            cameraUpLeft = cameraUp = 0; cameraUpRight = 1;
-            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = 0; cameraUpRight = 1;
+            cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
@@ -2695,20 +2773,20 @@ void processButtonLeftPress()
             radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
         }else if(currentCursorY >= 330 && currentCursorY <= 380){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft = cameraDown = cameraDownRight = 0;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
             cameraLeft = 0; cameraRight = 1;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
             Yaw = 90.0f;
-            Pitch = 45.0f;
+            Pitch = 28.0f;
             radius = 700.0;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
 
         }else if(currentCursorY >= 620 && currentCursorY <= 670){
-            cameraUpLeft = cameraUp = cameraUpRight = 0;
-            cameraDownLeft = cameraDown = 0; cameraDownRight = 1;
+            cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
+            cameraDownLeft = cameraDown2Up = cameraDown2Down = 0; cameraDownRight = 1;
             cameraLeft = cameraRight = 0;
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
