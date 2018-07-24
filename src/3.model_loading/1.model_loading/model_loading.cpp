@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include <thread>
+#include <mutex>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -56,6 +57,18 @@ bool DOOR_L2 = false;
 bool DOOR_R1 = false;
 bool DOOR_R2 = false;
 bool DOOR_B = false;
+
+std::mutex mtx;           // mutex for critical section
+
+struct Location
+{
+    float Yaw;
+    float Pitch;
+    float radius;
+    glm::vec3 at;
+};
+
+std::list<Location> LocationList;
 
 /// Holds all state information relevant to a character as loaded using FreeType
 struct Character {
@@ -695,6 +708,32 @@ void TestPasFun()
     }
 }
 
+void TestAnimation() {
+    // critical section (exclusive access to std::cout signaled by locking mtx):
+    while(1){
+        Location _loc;
+        if(!LocationList.empty()){
+            mtx.lock();
+            _loc = LocationList.front();
+            LocationList.pop_front();
+            mtx.unlock();
+
+            Pitch = _loc.Pitch;
+            radius = _loc.radius;
+            at = _loc.at;
+
+            if(abs(_loc.Yaw - Yaw) > 1.0f){
+                float len = (_loc.Yaw - Yaw)/10;
+                for(int i = 0; i < 10; i++){
+                    Yaw = Yaw + len;
+                    //cout << "_loc.Pitch = " << _loc.Pitch << " Yaw = " << Yaw << " Pitch = " << Pitch << " radius = " << radius << endl;
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                }
+            }
+        }
+    }
+}
+
 // utility function for loading a 2D texture from file
 // ---------------------------------------------------
 unsigned int loadTexture(char const *path)
@@ -736,9 +775,11 @@ unsigned int loadTexture(char const *path)
 
 int main()
 {
-    thread TestPASThread = thread{TestPasFun};
+    //thread TestPASThread = thread{TestPasFun};
 
     //thread TestPASThread2 = thread{TestPasFunLine};
+
+    thread TestAnimationThread = thread{TestAnimation};
 
     // glfw: initialize and configure
     // ------------------------------
@@ -2617,7 +2658,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     currentCursorX = int(xpos);
     currentCursorY = int(ypos);
 
-    printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
+    //printf("Mouse position move to [x=%d : y=%d]\n",int(xpos),int(ypos));
 }
 
 void processButtonLeftPress()
@@ -2630,10 +2671,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = 319.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 320.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{320.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else if(currentCursorY >= 330 && currentCursorY <= 380){
             cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
             cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
@@ -2641,10 +2686,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = -90.0f;
-            Pitch = 28.0f;
-            radius = 700.0;
+            // Yaw = 270.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{270.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else if(currentCursorY >= 620 && currentCursorY <= 670){
             cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
             cameraDownLeft = 1; cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
@@ -2652,10 +2701,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = 220.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 220.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{220.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else{
             ;
         }
@@ -2694,10 +2747,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
 
-            Yaw = 0.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 0.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{0.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else if(currentCursorY >= 190 && currentCursorY <= 240){
             cameraUpLeft = cameraUp2Down = 0;  cameraUp2Up = 1;  cameraUpRight = 0;
             cameraDownLeft = cameraDown2Up =  cameraDown2Down = cameraDownRight = 0;
@@ -2727,10 +2784,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up =  cameraRightDown2Up = 0;
 
-            Yaw = 180.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 180.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{180.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else{
             ;
         }
@@ -2768,10 +2829,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = 41.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 40.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{40.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else if(currentCursorY >= 330 && currentCursorY <= 380){
             cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
             cameraDownLeft = cameraDown2Up = cameraDown2Down = cameraDownRight = 0;
@@ -2779,10 +2844,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = 90.0f;
-            Pitch = 28.0f;
-            radius = 700.0;
+            // Yaw = 90.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{90.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
 
         }else if(currentCursorY >= 620 && currentCursorY <= 670){
             cameraUpLeft = cameraUp2Down = cameraUp2Up = cameraUpRight = 0;
@@ -2791,10 +2860,14 @@ void processButtonLeftPress()
             cameraLeftUp2Down = cameraRightUp2Down = 0;
             cameraLeftDown2Up = cameraRightDown2Up = 0;
 
-            Yaw = 140.0f;
-            Pitch = 28.0f;
-            radius = 700.0f;
+            // Yaw = 140.0f;
+            // Pitch = 28.0f;
+            // radius = 700.0f;
             at = glm::vec3(0.0f, 0.0f, 0.0f);
+            Location loc{140.0f, 28.0f, 700.0f, glm::vec3(0.0f, 0.0f, 0.0f)};
+            mtx.lock();
+            LocationList.push_back(loc);
+            mtx.unlock();
         }else{
             ;
         }
